@@ -1,0 +1,60 @@
+/**
+ *  @Author: Ramon Rosin 
+ *  @File: errors.css
+ *  @Date: 2017-12-13 16:50:14 
+ * @Last Modified by: Ramon Rosin
+ * @Last Modified time: 2017-12-14 12:06:15
+ */
+body {
+    font-family: Calibri, Helvetica, Verdana, Arial;
+    font-size: 12pt;
+    color: #555;
+
+    text-align: left;
+}
+
+header {
+    border-bottom: 2px solid #CCC;
+}
+
+.mainCaption {
+    font-size: 23pt;
+    font-weight: bold;
+}
+
+.paragraphCaption {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.errorBox {
+    border: 2px solid #CCC;
+}
+
+.errorMessage {
+    font-size: 15pt;
+}
+
+.errorInfo {
+    font-size: 15pt;
+}
+
+.stacktrace {
+    border: 2px solid #888;
+}
+
+.stCaption {
+    padding: 5px 5px 5px 10px;
+    border-bottom: 2px solid #888;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 15pt;
+    background-color: #5D7B9D;
+}
+
+.stContent {
+    margin: 0 auto;
+    padding: 5px;
+    color: #000;
+    background-color: #E6E6E6;
+}

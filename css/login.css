@@ -1,0 +1,33 @@
+#username, #password {
+    width: 200px;
+}
+
+#submit {
+    margin-top: 5px;
+}
+
+.loginBox {
+    border: 1px solid #999;
+    width: 350px;
+
+    margin: 50px auto 2px auto;
+}
+
+.loginBoxHeader {
+    border-bottom: 1px solid #999;
+    background-color: #5D7B9D;
+    padding: 2px;
+}
+
+.loginBoxCaption {
+    color: #FFF;
+    font-weight: bold;
+}
+
+.loginBoxBody {
+    padding: 5px;
+}
+
+.loginBoxBody .table {
+    border-bottom: 1px solid #999;
+}
