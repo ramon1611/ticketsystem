@@ -9,6 +9,7 @@
 #error_reporting( E_ALL & ~(E_STRICT|E_NOTICE) );
 #error_reporting( E_ALL ); //! #DEBUG
 
+session_start();
 ob_start();
 
 

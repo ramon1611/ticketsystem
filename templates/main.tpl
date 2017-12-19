@@ -7,7 +7,7 @@
     <head>
         <title>{$page.title}</title>
 
-        {foreach from=$page.stylesheets item=stylesheet}
+        {foreach from=$page.styles item=stylesheet}
             <link rel="stylesheet" type="text/css" href="{$stylesheet}">
         {/foreach}
     </head>

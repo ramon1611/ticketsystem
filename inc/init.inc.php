@@ -4,7 +4,7 @@
  *  @File: init.inc.php
  *  @Date: 2017-12-13 16:47:53 
  * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-15 15:55:14
+ * @Last Modified time: 2017-12-19 09:18:24
  */
 //* Definitions
 $path = array(
@@ -16,7 +16,8 @@ $path = array(
 	'includes'		=> array(
 		'init'					=> $hostInfo['baseDir'].'/inc/init.inc.php',
 		'error_handler'			=> $hostInfo['baseDir'].'/inc/error_handler.inc.php',
-		'handler_detection'		=> $hostInfo['baseDir'].'/inc/handler_detection.inc.php',
+        'handler_detection'		=> $hostInfo['baseDir'].'/inc/handler_detection.inc.php',
+        'loadDB'                => $hostInfo['baseDir'].'/inc/loadDB.inc.php',
 		'user_handlersDir'		=> $hostInfo['baseDir'].'/inc/user_handlers',
 
 		'system_handlersDir'	=> $hostInfo['baseDir'].'/inc/system_handlers',
@@ -29,10 +30,11 @@ $path = array(
 	'libsDir'		=> $hostInfo['baseDir'].'/libs',
 	'libs' 			=> array(
 		'yadal'		=> $hostInfo['baseDir'].'/libs/yadal/yadal.class.php',
-		'smarty'	=> $hostInfo['baseDir'].'/libs/smarty/smarty.class.php'
+		'smarty'	=> $hostInfo['baseDir'].'/libs/smarty/smarty.class.php',
+		'session'	=> $hostInfo['baseDir'].'/libs/session.class.php'
 	),
 
-	'stylesheets'			=> './css',
+	'styles'	    		=> './css',
 	'templates'				=> $hostInfo['baseDir'].'/templates',
 	'templates_compiled'	=> $hostInfo['baseDir'].'/templates/compiled',
 	'config'				=> $hostInfo['baseDir'].'/config',
@@ -40,18 +42,18 @@ $path = array(
 );
 
 $page = array(
-	'ID'			=> NULL, // = pageID from DB
-	'name'			=> NULL, // = name from DB
-	'title'			=> NULL, // = displayName from DB + ' | V-BC TS'
-	'caption'		=> NULL, // = displayName from DB
-	'href'			=> NULL,
-	'items'			=> NULL,
-	'stylesheets'	=> NULL
+	'ID'		=> NULL, // = pageID from DB
+	'name'		=> NULL, // = name from DB
+	'title'		=> NULL, // = displayName from DB + ' | V-BC TS'
+	'caption'	=> NULL, // = displayName from DB
+	'href'		=> NULL,
+	'items'		=> NULL,
+	'styles'	=> NULL
 );
 
 $settings = NULL;
 $strings = NULL;
-$stylesheets = NULL;
+$styles = NULL;
 
 //* Initialization Code
 // Include Required Files
@@ -59,6 +61,7 @@ require_once( $path['includes']['error_handler'] );
 require_once( $path['configFile'] );
 require_once( $path['libs']['yadal'] );
 require_once( $path['libs']['smarty'] );
+require_once( $path['libs']['session'] );
 
 // Initialize Smarty
 $smarty = new Smarty();
@@ -74,61 +77,9 @@ if ( ! $db->Connect( $dbInfo['host'], $dbInfo['username'], $dbInfo['password'] )
 	trigger_error( 'Es konnte keine Verbindung zur Datenbank hergestellt werden!', E_USER_ERROR );
 }
 
-// Load Config
-$sql = $db->query( 'SELECT * FROM config' );
-if ( $sql ) {
-	while ( $result = $db->getRecord( $sql ) ) {
-		if ( $result )
-			$settings[$result['setting']] = $result['value'];
-		else
-			trigger_error( 'Die Einstellung konnte nicht aus der Datenbank geladen werden! [$db->getRecord(@res:'.$result['setting'].')]', E_USER_ERROR );
-	}
-} else
-	trigger_error( 'Es konnten keine Einstellungen aus der Datenbank abgerufen werden! [$db->query(@query:*|settings)]', E_USER_ERROR );
-unset( $sql, $result );
-
-// Load Pages
-$sql = $db->query( 'SELECT * FROM pages ORDER BY pageID ASC' );
-if ( $sql ) {
-	while ( $result = $db->getRecord( $sql ) ) {
-		if ( $result )
-			$page['items'][$result['name']] = $result;
-		else
-			trigger_error( 'Die Seite konnte nicht aus der Datenbank geladen werden! [$db->getRecord(@res:'.$result['name'].')]', E_USER_ERROR );
-	}
-} else
-	trigger_error( 'Es konnten keine Seiten aus der Datenbank abgerufen werden! [$db->query(@query:*|pages)]', E_USER_ERROR );
-unset( $sql, $result );
-
-// Load Strings
-$sql = $db->query( 'SELECT * FROM strings' );
-if ( $sql ) {
-	while ( $result = $db->getRecord( $sql ) ) {
-		if ( $result )
-			$strings[$result['name']] = $result['value'];
-		else
-			trigger_error( 'Die Zeichenfolge konnte nicht aus der Datenbank geladen werden! [$db->getRecord(@res:'.$result['name'].')]', E_USER_ERROR );
-	}
-} else
-	trigger_error( 'Es konnten keine Zeichenfolgen aus der Datenbank abgerufen werden! [$db->query(@query:*|strings)]', E_USER_ERROR );
-unset( $sql, $result );
-
-// Load Stylesheets
-$sql = $db->query( 'SELECT * FROM stylesheets' );
-if ( $sql ) {
-	while ( $result = $db->getRecord( $sql ) ) {
-		if ( $result )
-			$stylesheets[$result['ID']] = $result;
-		else
-			trigger_error( 'Das Stylesheet konnte nicht aus der Datenbank geladen werden! [$db->getRecord(@res:'.$result['name'].')]', E_USER_ERROR );
-	}
-} else
-	trigger_error( 'Es konnten keine Stylesheets aus der Datenbank abgerufen werden! [$db->query(@query:*|stylesheets)]', E_USER_ERROR );
-unset( $sql, $result );
-
-// Include Page Handler
+// Load DB-Data + Handler Detection
+require_once( $path['includes']['loadDB'] );
 require_once( $path['includes']['handler_detection'] );
-require_once( $path['includes']['system_handlers']['page_handler'] );
 
 // Assign Smarty Vars
 $smarty->assign( 'tpl_name', $page['name'] );
