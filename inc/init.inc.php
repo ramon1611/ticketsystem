@@ -4,7 +4,7 @@
  *  @File: init.inc.php
  *  @Date: 2017-12-13 16:47:53 
  * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-19 09:18:24
+ * @Last Modified time: 2017-12-19 13:00:28
  */
 //* Definitions
 $path = array(
@@ -44,11 +44,21 @@ $path = array(
 $page = array(
 	'ID'		=> NULL, // = pageID from DB
 	'name'		=> NULL, // = name from DB
-	'title'		=> NULL, // = displayName from DB + ' | V-BC TS'
+	'title'		=> NULL, // = displayName from DB + Postfix
 	'caption'	=> NULL, // = displayName from DB
 	'href'		=> NULL,
 	'items'		=> NULL,
 	'styles'	=> NULL
+);
+
+$session = array(
+    'current'   => NULL, // Object of class Session
+    'items'     => NULL
+);
+
+$user = array(
+    'current'   => NULL, // Object of class User
+    'items'     => NULL
 );
 
 $settings = NULL;

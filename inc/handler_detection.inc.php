@@ -4,7 +4,7 @@
  *  @File: handler_detection.inc.php
  *  @Date: 2017-12-14 14:43:47 
  * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-15 08:30:02
+ * @Last Modified time: 2017-12-19 12:22:10
  */
 
 function require_handler(  ) {
@@ -32,6 +32,6 @@ if ( isset( $_GET['handler'] ) ) {
         else
             trigger_error( 'The file "'.$handlerPath.'" does not exist!', E_USER_WARNING );
     } else
-        trigger_error( 'A handler can not be used without an action!', E_USER_WARNING );
+        trigger_error( 'A user handler can not be used without an action!', E_USER_WARNING );
 }
 ?>

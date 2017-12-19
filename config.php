@@ -4,7 +4,7 @@
  *  @File: config.php
  *  @Date: 2017-12-13 16:51:55 
  * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-18 15:36:04
+ * @Last Modified time: 2017-12-19 10:55:47
  */
 $dbInfo = array(
 	'host'		=> 'idb',
@@ -19,17 +19,18 @@ $tables = array(
     'settings'      => 'config',
     'pages'         => 'pages',
     'strings'       => 'strings',
-    'styles'   => 'stylesheets'
+    'styles'        => 'stylesheets',
+    'sessions'      => 'sessions'
 );
 
 $columns = array(
-    'settings'      => array(
+    'settings'  => array(
         'ID'    => 'settingID',
         'name'  => 'name',
         'value' => 'value'
     ),
 
-    'pages'         => array(
+    'pages'     => array(
         'ID'            => 'pageID',
         'name'          => 'name',
         'displayName'   => 'displayName',
@@ -38,11 +39,12 @@ $columns = array(
     ),
 
     'sessions'  => array(
-        'ID'       => 'sessionID',
-        'expire'   => 'expireTimestamp'
+        'ID'        => 'sessionID',
+        'userID'    => 'userID',
+        'expire'    => 'expireTimestamp'
     ),
 
-    'strings'       => array(
+    'strings'   => array(
         'ID'    => 'stringID',
         'name'  => 'name',
         'value' => 'value'
