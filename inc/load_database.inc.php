@@ -5,11 +5,11 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * Author: ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 9:50:49 am
+ * Last Modified: Wednesday, 20th December 2017 4:23:27 pm
  * Modified By: ramon1611
  */
 //* Load Config
-$sql = $db->query( 'SELECT * FROM '.$tables['settings'] );
+$sql = $db->query( $query->select( $tables['settings'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
@@ -22,7 +22,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Pages
-$sql = $db->query( 'SELECT * FROM '.$tables['pages'].' ORDER BY '.$columns['pages']['ID'].' ASC' );
+$sql = $db->query( $query->select( $tables['pages'], $query::SELECT_ALL_COLUMNS, false ).' '.$query->order( array($columns['pages']['ID']) ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result ) {
@@ -41,7 +41,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Strings
-$sql = $db->query( 'SELECT * FROM '.$tables['strings'] );
+$sql = $db->query( $query->select( $tables['strings'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
@@ -54,7 +54,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Stylesheets
-$sql = $db->query( 'SELECT * FROM '.$tables['styles'] );
+$sql = $db->query( $query->select( $tables['styles'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
@@ -70,7 +70,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Sessions
-$sql = $db->query( 'SELECT * FROM '.$tables['sessions'] );
+$sql = $db->query( $query->select( $tables['sessions'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
         if ( $result ) {

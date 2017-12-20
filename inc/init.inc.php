@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * Author: ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 9:45:12 am
+ * Last Modified: Wednesday, 20th December 2017 4:09:39 pm
  * Modified By: ramon1611
  */
 //* Definitions
@@ -89,6 +89,9 @@ if ( ! $db->Connect( $dbInfo['host'], $dbInfo['username'], $dbInfo['password'] )
 	$db->Close();
 	trigger_error( 'Es konnte keine Verbindung zur Datenbank hergestellt werden!', E_USER_ERROR );
 }
+
+// Initialize SQLQuery
+$query = new SQLQuery();
 
 // Load DB-Data + Handler Detection
 require_once( $path['includes']['load_database'] );

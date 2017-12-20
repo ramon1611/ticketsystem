@@ -5,11 +5,13 @@
  * File Created: Tuesday, 19th December 2017 3:20:01 pm
  * Author: ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 9:46:49 am
+ * Last Modified: Wednesday, 20th December 2017 4:15:21 pm
  * Modified By: ramon1611
  */
 
 class SQLQuery {
+    const SELECT_ALL_COLUMNS = array( '*' );
+
     public function __construct( ) {}
     
     public function select( $table, array $columns, $end = true, $distinct = false ) {

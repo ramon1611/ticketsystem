@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * Author: ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 9:44:34 am
+ * Last Modified: Wednesday, 20th December 2017 4:33:03 pm
  * Modified By: ramon1611
  */
 
@@ -19,15 +19,29 @@ if ( isset( $_SESSION['internalID'] ) && $_SESSION['internalID'] != NULL ) {
 } else {
     $newSession = array(
         'ID'        => NULL,
-        'userID'    => 0, //! $user['current']->get()['ID'],
+        'userID'    => 0, //? $user['current']->get()['ID'],
         'expire'    => microtime(true) + $settings['session.lifetime'],
     );
 
-    $sql = $db->query( 'INSERT INTO '.$tables['sessions'].' ( '.$columns['sessions']['userID'].', '.$columns['sessions']['expire'].' )
-                                                     VALUES ( '.$newSession['userID'].', '.$newSession['expire'].' )' );
+    //! Untested
+    #$sql = $db->query( 'INSERT INTO '.$tables['sessions'].' ( '.$columns['sessions']['userID'].', '.$columns['sessions']['expire'].' )
+    #                                                 VALUES ( '.$newSession['userID'].', '.$newSession['expire'].' )' );
+    $cols = array(
+        $columns['sessions']['userID'],
+        $columns['sessions']['expire']
+    );
+    $vals = array(
+        $newSession['userID'],
+        $newSession['expire']
+    );
+    
+    $sql = $db->query( $query->insert( $tables['sessions'], $cols, $vals ) );
+    //TODO: Check for fails
 }
 
 function killSession( $sessionID ) {
-    $sql = $db->query( 'DELETE ' );
+    //! Untested
+    $sql = $db->query( $query->delete( $tables['sessions'], $columns['sessions']['ID'].'='.$sessionID ) );
+    //TODO: Check for fails
 }
 ?>
