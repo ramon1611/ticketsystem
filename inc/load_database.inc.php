@@ -1,12 +1,14 @@
 <?php
 /**
- *  @Author: Ramon Rosin 
- *  @File: loadDB.inc.php
- *  @Date: 2017-12-18 15:20:09 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-19 13:11:30
+ * File: load_database.inc.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 3:19:25 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:50:49 am
+ * Modified By: ramon1611
  */
-// Load Config
+//* Load Config
 $sql = $db->query( 'SELECT * FROM '.$tables['settings'] );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
@@ -19,7 +21,7 @@ if ( $sql ) {
 	trigger_error( 'No settings could be retrieved from the database! [$db->query(@query:*|'.$tables['settings'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
-// Load Pages
+//* Load Pages
 $sql = $db->query( 'SELECT * FROM '.$tables['pages'].' ORDER BY '.$columns['pages']['ID'].' ASC' );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
@@ -38,7 +40,7 @@ if ( $sql ) {
 	trigger_error( 'No pages could be retrieved from the database! [$db->query(@query:*|'.$tables['pages'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
-// Load Strings
+//* Load Strings
 $sql = $db->query( 'SELECT * FROM '.$tables['strings'] );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
@@ -51,7 +53,7 @@ if ( $sql ) {
 	trigger_error( 'No strings could be retrieved from the database! [$db->query(@query:*|'.$tables['strings'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
-// Load Stylesheets
+//* Load Stylesheets
 $sql = $db->query( 'SELECT * FROM '.$tables['styles'] );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
@@ -67,7 +69,7 @@ if ( $sql ) {
 	trigger_error( 'No stylesheets could be retrieved from the database! [$db->query(@query:*|'.$tables['styles'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
-// Load Sessions
+//* Load Sessions
 $sql = $db->query( 'SELECT * FROM '.$tables['sessions'] );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
@@ -81,4 +83,5 @@ if ( $sql ) {
     }
 } else
     trigger_error( 'No sessions could be retrieved from the database! [$db->query(@query:*|'.tables['sessions'].')]', E_USER_ERROR );
+unset( $sql, $result );
 ?>

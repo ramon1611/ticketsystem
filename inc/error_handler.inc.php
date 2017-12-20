@@ -1,10 +1,12 @@
 <?php
 /**
- *  @Author: Ramon Rosin 
- *  @File: error_handler.inc.php 
- *  @Date: 2017-12-13 11:24:01 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-14 14:44:08
+ * File: error_handler.inc.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 1:04:58 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:49:21 am
+ * Modified By: ramon1611
  */
 
 function error_handler ( $errno, $errstr, $errfile, $errline, array $errcontext ) {

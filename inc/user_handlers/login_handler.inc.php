@@ -1,10 +1,12 @@
 <?php
 /**
- *  @Author: Ramon Rosin 
- *  @File: login_handler.inc.php
- *  @Date: 2017-12-14 16:45:53 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-19 13:06:03
+ * File: login_handler.inc.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 1:04:58 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:48:47 am
+ * Modified By: ramon1611
  */
 
 if ( isset( $_handlerAction ) ) {

@@ -1,10 +1,12 @@
 <?php
 /**
- *  @Author: Ramon Rosin 
- *  @File: session.class.php
- *  @Date: 2017-12-18 07:14:55 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-19 13:03:28
+ * File: session.class.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 1:04:58 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:45:40 am
+ * Modified By: ramon1611
  */
 
 class Session {

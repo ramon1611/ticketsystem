@@ -1,10 +1,12 @@
 <?php
 /**
- *  @Author: Ramon Rosin
- *  @File: init.inc.php
- *  @Date: 2017-12-13 16:47:53 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-20 08:46:09
+ * File: init.inc.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 1:04:58 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:45:12 am
+ * Modified By: ramon1611
  */
 //* Definitions
 $path = array(

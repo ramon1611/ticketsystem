@@ -1,10 +1,12 @@
 <?php
 /**
- *  @Author: Ramon Rosin
- *  @File: index.php
- *  @Date: 2017-12-13 16:48:30 
- *  @Last Modified by: Ramon Rosin
- *  @Last Modified time: 2017-12-13 16:49:43
+ * File: index.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 1:04:56 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:42:53 am
+ * Modified By: ramon1611
  */
 #error_reporting( E_ALL & ~(E_STRICT|E_NOTICE) );
 #error_reporting( E_ALL ); //! #DEBUG

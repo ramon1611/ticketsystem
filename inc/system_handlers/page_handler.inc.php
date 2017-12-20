@@ -1,11 +1,14 @@
 <?php
 /**
- *  @Author: Ramon Rosin 
- *  @File: page_handler.inc.php
- *  @Date: 2017-12-13 16:50:45 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-18 16:06:19
+ * File: page_handler.inc.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 1:04:58 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:48:30 am
+ * Modified By: ramon1611
  */
+
 if ( isset( $_GET['page'] ) || isset( $_GET['pageID'] ) )
     $pageParams = $_GET;
 else

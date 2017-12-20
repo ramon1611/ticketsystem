@@ -1,10 +1,12 @@
 <?php
 /**
- *  @Author: Ramon Rosin 
- *  @File: sqlquery.class.php
- *  @Date: 2017-12-19 15:20:05 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-20 08:33:11
+ * File: sqlquery.class.php
+ * Project: Ticketsystem
+ * File Created: Tuesday, 19th December 2017 3:20:01 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:46:49 am
+ * Modified By: ramon1611
  */
 
 class SQLQuery {

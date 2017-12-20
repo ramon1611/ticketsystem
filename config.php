@@ -1,11 +1,14 @@
 <?php
 /**
- *  @Author: Ramon Rosin 
- *  @File: config.php
- *  @Date: 2017-12-13 16:51:55 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-19 10:55:47
+ * File: config.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 1:04:56 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:52:37 am
+ * Modified By: ramon1611
  */
+
 $dbInfo = array(
 	'host'		=> 'idb',
 	'dbType'	=> 'mssql',

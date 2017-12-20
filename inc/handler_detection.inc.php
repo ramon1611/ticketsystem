@@ -1,16 +1,13 @@
 <?php
 /**
- *  @Author: Ramon Rosin 
- *  @File: handler_detection.inc.php
- *  @Date: 2017-12-14 14:43:47 
- * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-19 12:22:10
+ * File: handler_detection.inc.php
+ * Project: Ticketsystem
+ * File Created: Monday, 18th December 2017 1:04:58 pm
+ * Author: ramon1611
+ * -----
+ * Last Modified: Wednesday, 20th December 2017 9:49:59 am
+ * Modified By: ramon1611
  */
-
-function require_handler(  ) {
-
-}
-
 //* System Handlers
 foreach ( $path['includes']['system_handlers'] as $handlerPath ) {
     if ( file_exists( $handlerPath ) )
