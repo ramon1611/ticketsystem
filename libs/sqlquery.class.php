@@ -4,7 +4,7 @@
  *  @File: sqlquery.class.php
  *  @Date: 2017-12-19 15:20:05 
  * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-19 17:01:34
+ * @Last Modified time: 2017-12-20 08:33:11
  */
 
 class SQLQuery {
@@ -76,7 +76,7 @@ class SQLQuery {
 
             foreach ($valuePairs as $column => $value)
                 $valPairs .= $column.'=\''.$value.'\', ';
-            $valPairs .= $lastPair.' ';
+            $valPairs .= key($lastPair).'=\''.current($lastPair).'\' ';
 
             $query = 'UPDATE '.$table.' SET '.$valPairs.$this->where( $condition, $end );
             return $query;

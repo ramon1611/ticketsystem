@@ -4,7 +4,7 @@
  *  @File: init.inc.php
  *  @Date: 2017-12-13 16:47:53 
  * @Last Modified by: Ramon Rosin
- * @Last Modified time: 2017-12-19 13:00:28
+ * @Last Modified time: 2017-12-20 08:46:09
  */
 //* Definitions
 $path = array(
@@ -17,11 +17,13 @@ $path = array(
 		'init'					=> $hostInfo['baseDir'].'/inc/init.inc.php',
 		'error_handler'			=> $hostInfo['baseDir'].'/inc/error_handler.inc.php',
         'handler_detection'		=> $hostInfo['baseDir'].'/inc/handler_detection.inc.php',
-        'loadDB'                => $hostInfo['baseDir'].'/inc/loadDB.inc.php',
-		'user_handlersDir'		=> $hostInfo['baseDir'].'/inc/user_handlers',
-
+        'load_database'         => $hostInfo['baseDir'].'/inc/load_database.inc.php',
+        'class_loader'          => $hostInfo['baseDir'].'/inc/class_loader.inc.php',
+        
+        'user_handlersDir'		=> $hostInfo['baseDir'].'/inc/user_handlers',
 		'system_handlersDir'	=> $hostInfo['baseDir'].'/inc/system_handlers',
-		'system_handlers'		=> array(	//! Order by Priority
+
+        'system_handlers'		=> array(	//! Order by Priority
 			'session_handler'	=> $hostInfo['baseDir'].'/inc/system_handlers/session_handler.inc.php',
 			'page_handler'		=> $hostInfo['baseDir'].'/inc/system_handlers/page_handler.inc.php'
 		)
@@ -29,9 +31,10 @@ $path = array(
 
 	'libsDir'		=> $hostInfo['baseDir'].'/libs',
 	'libs' 			=> array(
-		'yadal'		=> $hostInfo['baseDir'].'/libs/yadal/yadal.class.php',
+        'yadal'		=> $hostInfo['baseDir'].'/libs/yadal/yadal.class.php',
+        'sqlquery'  => $hostInfo['baseDir'].'/libs/sqlquery.class.php',
 		'smarty'	=> $hostInfo['baseDir'].'/libs/smarty/smarty.class.php',
-		'session'	=> $hostInfo['baseDir'].'/libs/session.class.php'
+        'session'	=> $hostInfo['baseDir'].'/libs/session.class.php',
 	),
 
 	'styles'	    		=> './css',
@@ -69,9 +72,7 @@ $styles = NULL;
 // Include Required Files
 require_once( $path['includes']['error_handler'] );
 require_once( $path['configFile'] );
-require_once( $path['libs']['yadal'] );
-require_once( $path['libs']['smarty'] );
-require_once( $path['libs']['session'] );
+require_once( $path['includes']['class_loader'] );
 
 // Initialize Smarty
 $smarty = new Smarty();
@@ -88,7 +89,7 @@ if ( ! $db->Connect( $dbInfo['host'], $dbInfo['username'], $dbInfo['password'] )
 }
 
 // Load DB-Data + Handler Detection
-require_once( $path['includes']['loadDB'] );
+require_once( $path['includes']['load_database'] );
 require_once( $path['includes']['handler_detection'] );
 
 // Assign Smarty Vars
