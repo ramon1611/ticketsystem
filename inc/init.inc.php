@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * Author: ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 4:09:39 pm
+ * Last Modified: Saturday, 23rd December 2017 4:10:49 pm
  * Modified By: ramon1611
  */
 //* Definitions
@@ -36,7 +36,8 @@ $path = array(
         'yadal'		=> $hostInfo['baseDir'].'/libs/yadal/yadal.class.php',
         'sqlquery'  => $hostInfo['baseDir'].'/libs/sqlquery.class.php',
 		'smarty'	=> $hostInfo['baseDir'].'/libs/smarty/smarty.class.php',
-        'session'	=> $hostInfo['baseDir'].'/libs/session.class.php',
+		'session'	=> $hostInfo['baseDir'].'/libs/session.class.php',
+		'nekwitaya'	=> $hostInfo['baseDir'].'/libs/nekwitaya/nekwitaya-framework.class.php'
 	),
 
 	'styles'	    		=> './css',
