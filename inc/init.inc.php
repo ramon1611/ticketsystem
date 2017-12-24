@@ -3,9 +3,9 @@
  * File: init.inc.php
  * Project: Ticketsystem
  * File Created: Monday, 18th December 2017 1:04:58 pm
- * Author: ramon1611
+ * @author ramon1611
  * -----
- * Last Modified: Saturday, 23rd December 2017 4:10:49 pm
+ * Last Modified: Sunday, 24th December 2017 7:08:00 am
  * Modified By: ramon1611
  */
 //* Definitions

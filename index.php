@@ -3,9 +3,9 @@
  * File: index.php
  * Project: Ticketsystem
  * File Created: Monday, 18th December 2017 1:04:56 pm
- * Author: ramon1611
+ * @author ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 9:42:53 am
+ * Last Modified: Sunday, 24th December 2017 7:11:04 am
  * Modified By: ramon1611
  */
 #error_reporting( E_ALL & ~(E_STRICT|E_NOTICE) );

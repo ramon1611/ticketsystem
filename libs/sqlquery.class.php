@@ -3,18 +3,42 @@
  * File: sqlquery.class.php
  * Project: Ticketsystem
  * File Created: Tuesday, 19th December 2017 3:20:01 pm
- * Author: ramon1611
+ * @author ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 4:15:21 pm
+ * Last Modified: Sunday, 24th December 2017 3:38:38 am
  * Modified By: ramon1611
  */
 
+/**
+ * Class SQLQuery
+ * 
+ * @api
+ * @package Libs\SQLQuery
+ * 
+ * 
+ */
 class SQLQuery {
     const SELECT_ALL_COLUMNS = array( '*' );
 
+    /**
+     * __construct
+     *
+     * @param mixed 
+     * @return void
+     */
     public function __construct( ) {}
     
-    public function select( $table, array $columns, $end = true, $distinct = false ) {
+    
+    /**
+     * SQLQuery::Select
+     *
+     * @param string $table
+     * @param array $columns
+     * @param bool $end = true
+     * @param bool $distinct = false
+     * @return mixed
+     */
+    public function Select( string $table, array $columns, bool $end = true, bool $distinct = false ): mixed {
         if ( isset( $table, $columns, $end, $distinct ) ) {
             $lastCol = array_pop( $columns );
             $cols = NULL;
@@ -29,7 +53,14 @@ class SQLQuery {
             return false;
     }
 
-    public function where( $condition, $end = true ) {
+    /**
+     * SQLQuery::Where
+     *
+     * @param string $condition
+     * @param bool $end = true
+     * @return mixed
+     */
+    public function Where( string $condition, bool $end = true ): mixed {
         if ( isset( $condition, $end ) ) {
             $query = 'WHERE '.$condition.( $end ? ';' : '' );
             return $query;
@@ -37,7 +68,15 @@ class SQLQuery {
             return false;
     }
 
-    public function order( array $columns, $order = 'ASC', $end = true ) {
+    /**
+     * SQLQuery::Order
+     *
+     * @param array $columns
+     * @param string $order = 'ASC'
+     * @param bool $end = true
+     * @return mixed
+     */
+    public function Order( array $columns, string $order = 'ASC', bool $end = true ): mixed {
         if ( isset( $columns, $order, $end ) ) {
             $lastCol = array_pop( $columns );
             $cols = NULL;
@@ -52,7 +91,16 @@ class SQLQuery {
             return false;
     }
 
-    public function insert( $table, array $columns, array $values, $end = true ) {
+    /**
+     * SQLQuery::Insert
+     *
+     * @param string $table
+     * @param array $columns
+     * @param array $values
+     * @param bool $end = true
+     * @return mixed
+     */
+    public function Insert( string $table, array $columns, array $values, bool $end = true ): mixed {
         if ( isset( $table, $columns, $values, $end ) ) {
             $lastCol = array_pop( $columns );
             $lastVal = array_pop( $values );
@@ -73,7 +121,16 @@ class SQLQuery {
             return false;
     }
 
-    public function update( $table, array $valuePairs, $condition, $end = true ) {
+    /**
+     * SQLQuery::Update
+     *
+     * @param string $table
+     * @param array $valuePairs
+     * @param string $condition
+     * @param bool $end = true
+     * @return mixed
+     */
+    public function Update( string $table, array $valuePairs, string $condition, bool $end = true ): mixed {
         if ( isset( $table, $valuePairs, $condition, $end ) ) {
             $lastPair = $this->array_pop_assoc( $valuePairs );
             $valPairs = NULL;
@@ -88,7 +145,15 @@ class SQLQuery {
             return false;
     }
 
-    public function delete( $table, $condition, $end = true ) {
+    /**
+     * SQLQuery::Delete
+     *
+     * @param string $table
+     * @param string $condition
+     * @param bool $end = true
+     * @return mixed
+     */
+    public function Delete( string $table, string $condition, bool $end = true ): mixed {
         if ( isset( $table, $condition, $end ) ) {
             $query = 'DELETE FROM '.$table.' '.$this->where( $condition, $end );
             return $query;
@@ -97,7 +162,15 @@ class SQLQuery {
     }
 
 
-    private function array_pop_assoc( &$arr ) {
+    /**
+     * SQLQuery::array_pop_assoc
+     * 
+     * @internal
+     * 
+     * @param array &$arr
+     * @return mixed
+     */
+    private function array_pop_assoc( array &$arr ): array {
         $value = end($arr);
         $key = key($arr);
         unset($arr[$key]);

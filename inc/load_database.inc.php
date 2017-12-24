@@ -3,9 +3,9 @@
  * File: load_database.inc.php
  * Project: Ticketsystem
  * File Created: Monday, 18th December 2017 3:19:25 pm
- * Author: ramon1611
+ * @author ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 4:23:27 pm
+ * Last Modified: Sunday, 24th December 2017 7:10:18 am
  * Modified By: ramon1611
  */
 //* Load Config

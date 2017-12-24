@@ -3,9 +3,9 @@
  * File: handler_detection.inc.php
  * Project: Ticketsystem
  * File Created: Monday, 18th December 2017 1:04:58 pm
- * Author: ramon1611
+ * @author ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 9:49:59 am
+ * Last Modified: Sunday, 24th December 2017 7:09:07 am
  * Modified By: ramon1611
  */
 //* System Handlers
