@@ -13,5 +13,3 @@ _checkout.bat
 /_exclude/
 /templates/compiled/*
 /cache/*
-/vendor/*
-composer.*

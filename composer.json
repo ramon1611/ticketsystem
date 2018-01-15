@@ -1,0 +1,19 @@
+{
+	"name": "ramon1611/ticketsystem",
+	"description": "A simple ticketsystem",
+	"type": "project",
+	"license": "CC-BY-SA-4.0",
+	
+	"authors": [
+		{
+			"name":	"Ramon Rosin (ramon1611)",
+			"email": "rosin.ramon@gmail.com",
+			"role": "Developer"
+		}
+	],
+	
+	"require":	{
+		"zendframework/zendframework": "^3.0",
+		"http-interop/http-server-middleware": "^1.0"
+	}
+}
