@@ -7,4 +7,11 @@
 # Last Modified: Sunday, 24th December 2017 7:10:54 am
 # Modified By: ramon1611
 ###
+_checkout.bat
+/.checkout/
+/.vscode/
 /_exclude/
+/templates/compiled/*
+/cache/*
+/vendor/*
+composer.*

@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 7:08:00 am
+ * Last Modified: Monday, 15th January 2018 12:31:57 pm
  * Modified By: ramon1611
  */
 //* Definitions
@@ -44,7 +44,11 @@ $path = array(
 	'templates'				=> $hostInfo['baseDir'].'/templates',
 	'templates_compiled'	=> $hostInfo['baseDir'].'/templates/compiled',
 	'config'				=> $hostInfo['baseDir'].'/config',
-	'cache'					=> $hostInfo['baseDir'].'/cache'
+    'cache'					=> $hostInfo['baseDir'].'/cache',
+
+    'composer'              => array(
+        'autoload'          => $hostInfo['baseDir'].'/vendor/autoload.php'
+    )
 );
 
 $page = array(
@@ -73,6 +77,7 @@ $styles = NULL;
 
 //* Initialization Code
 // Include Required Files
+require_once( $path['composer']['autoload'] );
 require_once( $path['includes']['error_handler'] );
 require_once( $path['configFile'] );
 require_once( $path['includes']['class_loader'] );
@@ -83,6 +88,10 @@ $smarty->setTemplateDir( $path['templates'] );
 $smarty->setCompileDir( $path['templates_compiled'] );
 $smarty->setConfigDir( $path['config'] );
 $smarty->setCacheDir( $path['cache'] );
+
+//! TEST
+$di = new Zend\Di\Di;
+$x = $di->newInstance('Yadal');
 
 // Connect to Database
 $db = newYadal( $dbInfo['database'], $dbInfo['dbType'] );

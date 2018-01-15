@@ -5,14 +5,14 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 7:07:29 am
+ * Last Modified: Monday, 15th January 2018 9:03:14 am
  * Modified By: ramon1611
  */
 
 $dbInfo = array(
-	'host'		=> '',#'idb',
-	'dbType'	=> 'access',#'mssql',
-	'database'	=> $hostInfo['baseDir'].'/_exclude/ticketDB.accdb',
+	'host'		=> 'idb',#'idb',
+	'dbType'	=> 'mssql',#'mssql',
+	'database'	=> 'ticket',
 	'username'	=> 'ticket',
 	'password'	=> 'china',
 	'charset'	=> 'utf8'

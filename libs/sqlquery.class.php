@@ -5,7 +5,7 @@
  * File Created: Tuesday, 19th December 2017 3:20:01 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 3:38:38 am
+ * Last Modified: Monday, 15th January 2018 9:25:30 am
  * Modified By: ramon1611
  */
 
@@ -38,7 +38,7 @@ class SQLQuery {
      * @param bool $distinct = false
      * @return mixed
      */
-    public function Select( string $table, array $columns, bool $end = true, bool $distinct = false ): mixed {
+    public function Select( string $table, array $columns, bool $end = true, bool $distinct = false ) {
         if ( isset( $table, $columns, $end, $distinct ) ) {
             $lastCol = array_pop( $columns );
             $cols = NULL;
@@ -60,7 +60,7 @@ class SQLQuery {
      * @param bool $end = true
      * @return mixed
      */
-    public function Where( string $condition, bool $end = true ): mixed {
+    public function Where( string $condition, bool $end = true ) {
         if ( isset( $condition, $end ) ) {
             $query = 'WHERE '.$condition.( $end ? ';' : '' );
             return $query;
@@ -76,7 +76,7 @@ class SQLQuery {
      * @param bool $end = true
      * @return mixed
      */
-    public function Order( array $columns, string $order = 'ASC', bool $end = true ): mixed {
+    public function Order( array $columns, string $order = 'ASC', bool $end = true ) {
         if ( isset( $columns, $order, $end ) ) {
             $lastCol = array_pop( $columns );
             $cols = NULL;
@@ -100,7 +100,7 @@ class SQLQuery {
      * @param bool $end = true
      * @return mixed
      */
-    public function Insert( string $table, array $columns, array $values, bool $end = true ): mixed {
+    public function Insert( string $table, array $columns, array $values, bool $end = true ) {
         if ( isset( $table, $columns, $values, $end ) ) {
             $lastCol = array_pop( $columns );
             $lastVal = array_pop( $values );
@@ -130,7 +130,7 @@ class SQLQuery {
      * @param bool $end = true
      * @return mixed
      */
-    public function Update( string $table, array $valuePairs, string $condition, bool $end = true ): mixed {
+    public function Update( string $table, array $valuePairs, string $condition, bool $end = true ) {
         if ( isset( $table, $valuePairs, $condition, $end ) ) {
             $lastPair = $this->array_pop_assoc( $valuePairs );
             $valPairs = NULL;
@@ -153,7 +153,7 @@ class SQLQuery {
      * @param bool $end = true
      * @return mixed
      */
-    public function Delete( string $table, string $condition, bool $end = true ): mixed {
+    public function Delete( string $table, string $condition, bool $end = true ) {
         if ( isset( $table, $condition, $end ) ) {
             $query = 'DELETE FROM '.$table.' '.$this->where( $condition, $end );
             return $query;

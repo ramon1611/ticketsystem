@@ -25,7 +25,7 @@ class PostgreSQL extends Yadal
      */
     function __construct( $db )
     {
-        $this->Yadal( $db );
+        parent::__construct( $db );
         $this->_nameQuote    = array('"', '"');
         $this->_quoteNumbers = true;
     }

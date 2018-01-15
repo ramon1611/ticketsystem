@@ -25,7 +25,7 @@ class MySQL extends Yadal
      */
     function __construct( $db )
     {
-        $this->Yadal( $db );
+        parent::__construct( $db );
         $this->_quoteNumbers = true;
         $this->_nameQuote = '`';
     }

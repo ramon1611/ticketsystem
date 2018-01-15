@@ -4,8 +4,8 @@
     <head>
         <title>{$strings.{"login.title"}}{$settings.{"page.title.delimeter"}}{$strings.{"main.title.postfix"}}</title>
 
-        {foreach from=$page.stylesheets item=stylesheet}
-            <link rel="stylesheet" type="text/css" href="{$stylesheet}">
+        {foreach from=$page.styles item=style}
+            <link rel="stylesheet" type="text/css" href="{$style}">
         {/foreach}
     </head>
 
@@ -22,7 +22,6 @@
 
             <div class="loginBoxBody">
                 <form action="{$settings.{"url.index.fileName"}}?handler=login_handler&action=login" method="post" name="login">
-                <input name="login" value="true" type="hidden">
                     <div class="table">
                         <div class="tr">
                             <div class="td rightAlign">

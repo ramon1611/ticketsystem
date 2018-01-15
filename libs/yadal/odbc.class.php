@@ -31,7 +31,7 @@ class ODBC extends Yadal {
      * @author Teye Heimans
      */
     function __construct( $db ) {
-        $this->Yadal( $db );
+        parent::__construct( $db );
         $this->_nameQuote = "'";
     }
     /**

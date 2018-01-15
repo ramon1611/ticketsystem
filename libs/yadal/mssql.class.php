@@ -24,7 +24,7 @@ class MSSQL extends Yadal
      */
     function __construct( $db )
     {
-        Yadal::__construct( $db );
+        parent::__construct( $db );
         $this->_nameQuote = array('[',']');
     }
     /**
