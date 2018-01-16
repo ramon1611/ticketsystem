@@ -3,17 +3,29 @@
 	"description": "A simple ticketsystem",
 	"type": "project",
 	"license": "CC-BY-SA-4.0",
+	"minimum-stability": "stable",
 	
 	"authors": [
 		{
-			"name":	"Ramon Rosin (ramon1611)",
+			"name":	"ramon1611",
 			"email": "rosin.ramon@gmail.com",
 			"role": "Developer"
 		}
 	],
 	
-	"require":	{
-		"zendframework/zendframework": "^3.0",
-		"http-interop/http-server-middleware": "^1.0"
+	"config": {
+		"secure-http": false
+	},
+	
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://h2635187.stratoserver.net/repo/composer"
+		}
+	],
+	
+	"require": {
+		"smarty/smarty": "^3.1",
+		"ramon1611/sqlquerybuilder": "*"
 	}
 }

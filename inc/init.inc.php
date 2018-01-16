@@ -5,9 +5,12 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 15th January 2018 12:31:57 pm
+ * Last Modified: Tuesday, 16th January 2018 4:59:15 pm
  * Modified By: ramon1611
  */
+
+namespace ramon1611;
+
 //* Definitions
 $path = array(
 	'root'			=> $hostInfo['baseDir'],
@@ -34,8 +37,6 @@ $path = array(
 	'libsDir'		=> $hostInfo['baseDir'].'/libs',
 	'libs' 			=> array(
         'yadal'		=> $hostInfo['baseDir'].'/libs/yadal/yadal.class.php',
-        'sqlquery'  => $hostInfo['baseDir'].'/libs/sqlquery.class.php',
-		'smarty'	=> $hostInfo['baseDir'].'/libs/smarty/smarty.class.php',
 		'session'	=> $hostInfo['baseDir'].'/libs/session.class.php',
 		'nekwitaya'	=> $hostInfo['baseDir'].'/libs/nekwitaya/nekwitaya-framework.class.php'
 	),
@@ -77,21 +78,19 @@ $styles = NULL;
 
 //* Initialization Code
 // Include Required Files
-require_once( $path['composer']['autoload'] );
+$loader = require_once( $path['composer']['autoload'] );
 require_once( $path['includes']['error_handler'] );
 require_once( $path['configFile'] );
 require_once( $path['includes']['class_loader'] );
 
+var_dump($loader);
+
 // Initialize Smarty
-$smarty = new Smarty();
+$smarty = new \Smarty();
 $smarty->setTemplateDir( $path['templates'] );
 $smarty->setCompileDir( $path['templates_compiled'] );
 $smarty->setConfigDir( $path['config'] );
 $smarty->setCacheDir( $path['cache'] );
-
-//! TEST
-$di = new Zend\Di\Di;
-$x = $di->newInstance('Yadal');
 
 // Connect to Database
 $db = newYadal( $dbInfo['database'], $dbInfo['dbType'] );
@@ -101,7 +100,8 @@ if ( ! $db->Connect( $dbInfo['host'], $dbInfo['username'], $dbInfo['password'] )
 }
 
 // Initialize SQLQuery
-$query = new SQLQuery();
+//use ramon1611\Libs\SQLQueryBuilder;
+$query = new Libs\SQLQueryBuilder();
 
 // Load DB-Data + Handler Detection
 require_once( $path['includes']['load_database'] );
