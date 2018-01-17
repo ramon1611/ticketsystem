@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:09:02 pm
+ * Last Modified: Wednesday, 17th January 2018 4:14:12 pm
  * Modified By: ramon1611
  */
 
@@ -62,12 +62,12 @@ $page = array(
 
 $session = array(
     'current'   => NULL, // Object of class Session
-    'items'     => NULL
+    'items'     => NULL  // Array of objects of class Session
 );
 
 $user = array(
     'current'   => NULL, // Object of class User
-    'items'     => NULL
+    'items'     => NULL  // Array of objects of class User
 );
 
 $settings = NULL;

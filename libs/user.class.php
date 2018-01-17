@@ -5,60 +5,77 @@
  * File Created: Tuesday, 19th December 2017 12:44:29 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:16:10 pm
+ * Last Modified: Wednesday, 17th January 2018 4:31:05 pm
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
 class User {
-    private $_user = NULL;
+    private $_id = NULL;
+    private $_name = NULL;
+    private $_mail = NULL;
+    private $_passwordHash = NULL;
     
     /**
-     * User::__construct
+     * __construct
      * 
      * Constructor
+     * @param void
+     * @return void
      */
-    public function __construct() {
-        $get_arguments       = func_get_args();
-        $number_of_arguments = func_num_args();
-
-        if ( method_exists( $this, $method_name = '__construct'.$number_of_arguments ) )
-            call_user_func_array( array( $this, $method_name ), $get_arguments );
-        else 
-            trigger_error( 'Method "'.$method_name.'" does not exist!', E_USER_ERROR );
+    public function __construct( array $userData = NULL ) {
+        if ( isset( $userData ) )
+            $this->set( $userData );
     }
 
     /**
-     * User::__construct0
+     * User::set
      * 
-     * @return void
+     * Set user data
+     * @param array $userData
+     * @return bool
      */
-    private function __construct0(): void {
-        
-    }
+    public function set( array $userData ) {
+        if ( isset( $userData ) ) {
+            if ( isset( $userData['id'], $userData['name'], $userData['mail'], $userData['passwordHash'] ) ) {
+                $this->_id              = $userData['id'];
+                $this->_name            = $userData['name'];
+                $this->_mail            = $userData['mail'];
+                $this->_passwordHash    = $userData['passwordHash'];
 
-    /**
-     * User::__construct2
-     *
-     * Check user credentials
-     * @param string $username
-     * @param string $password
-     * @return void
-     */
-    private function __construct2( string $username, string $password ): void {
-        
+                return true;
+            } else
+                return false;
+        } else
+            return false;
     }
 
     /**
      * User::get
      * 
      * Get user data
-     * @return mixed
+     * @param void
+     * @return array
      */
     public function get() {
-        return $this->_user;
+        return array(
+            'id'            => $this->_id,
+            'name'          => $this->_name,
+            'mail'          => $this->_mail,
+            'passwordHash'  => $this->_passwordHash
+        );
     }
 
+    /**
+     * User::checkCredential
+     * 
+     * Check user credential
+     * @param string $password
+     * @return bool
+     */
+    public function checkCredential( string $password ) {
+        return password_verify( $password, $this->_passwordHash );
+    }
 }
 ?>

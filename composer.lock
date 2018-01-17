@@ -129,9 +129,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/c7d42e4a327c402897dd587871434888fde1e7a9",
+                "url": "http://h2635187.stratoserver.net/repo/composer/dist/smarty/smarty/smarty-smarty-c7d42e4a327c402897dd587871434888fde1e7a9-zip-dd52c5.zip",
                 "reference": "c7d42e4a327c402897dd587871434888fde1e7a9",
-                "shasum": ""
+                "shasum": "16d4b282263babaa42074a778f91135aba574072"
             },
             "require": {
                 "php": ">=5.2"

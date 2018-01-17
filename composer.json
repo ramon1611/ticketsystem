@@ -3,11 +3,12 @@
 	"description": "A simple ticketsystem",
 	"type": "project",
 	"license": "CC-BY-SA-4.0",
+	"homepage": "https://github.com/ramon1611/ticketsystem",
 	"minimum-stability": "stable",
 	
 	"authors": [
 		{
-			"name":	"ramon1611",
+			"name":	"Ramon Rosin (ramon1611)",
 			"email": "rosin.ramon@gmail.com",
 			"role": "Developer"
 		}
