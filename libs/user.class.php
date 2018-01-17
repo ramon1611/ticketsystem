@@ -5,9 +5,11 @@
  * File Created: Tuesday, 19th December 2017 12:44:29 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 15th January 2018 10:40:39 am
+ * Last Modified: Wednesday, 17th January 2018 12:16:10 pm
  * Modified By: ramon1611
  */
+
+namespace ramon1611;
 
 class User {
     private $_user = NULL;

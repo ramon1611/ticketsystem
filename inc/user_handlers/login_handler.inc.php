@@ -5,9 +5,11 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * Author: ramon1611
  * -----
- * Last Modified: Monday, 15th January 2018 10:10:41 am
+ * Last Modified: Wednesday, 17th January 2018 12:15:20 pm
  * Modified By: ramon1611
  */
+
+namespace ramon1611;
 
 if ( isset( $_handlerAction ) ) {
     switch ($_handlerAction) {
@@ -35,7 +37,7 @@ if ( isset( $_handlerAction ) ) {
         
             $sql = $db->query( $query->insert( $tables['sessions'], $cols, $vals ) );
             if ( !$sql )
-                trigger_error('Could not create a new session!', E_USER_WARNING);
+                trigger_error( 'Could not create a new session!', E_USER_WARNING );
             unset( $sql );
             break;
         

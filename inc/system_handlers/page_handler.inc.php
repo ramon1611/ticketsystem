@@ -5,9 +5,11 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 7:08:28 am
+ * Last Modified: Wednesday, 17th January 2018 12:14:28 pm
  * Modified By: ramon1611
  */
+
+namespace ramon1611;
 
 if ( isset( $_GET['page'] ) || isset( $_GET['pageID'] ) )
     $pageParams = $_GET;

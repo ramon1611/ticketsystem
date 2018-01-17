@@ -18,14 +18,14 @@
 	},
 	
 	"repositories": [
-		{
-			"type": "composer",
-			"url": "http://h2635187.stratoserver.net/repo/composer"
-		}
+		{ "packagist": false },
+		{ "type": "composer", "url": "http://h2635187.stratoserver.net/repo/composer" }
 	],
 	
 	"require": {
+		"ramon1611/sqlquerybuilder": "^1.0.1.2",
+		"ramon1611/session": "^1.0.0",
 		"smarty/smarty": "^3.1",
-		"ramon1611/sqlquerybuilder": "*"
+		"heimans/yadal": "^1.0.0"
 	}
 }

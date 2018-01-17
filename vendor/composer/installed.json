@@ -1,20 +1,100 @@
 [
     {
-        "name": "ramon1611/sqlquerybuilder",
-        "version": "1.0.1.1",
-        "version_normalized": "1.0.1.1",
+        "name": "heimans/yadal",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ramon1611/SQLQueryBuilder.git",
-            "reference": "d9e7288432df6c7e81ed50f75e4e2ae9da08ca7d"
+            "url": "https://github.com/ramon1611/Yadal.git",
+            "reference": "448fd96c0c10f2c6513a29d4cf85af0eb14dbde0"
         },
         "dist": {
             "type": "zip",
-            "url": "http://h2635187.stratoserver.net/repo/composer/dist/ramon1611/sqlquerybuilder/ramon1611-sqlquerybuilder-d9e7288432df6c7e81ed50f75e4e2ae9da08ca7d-zip-cfd292.zip",
-            "reference": "d9e7288432df6c7e81ed50f75e4e2ae9da08ca7d",
-            "shasum": "3819cdc738d45f633cc4f4eb88c7a0321fa1ffd5"
+            "url": "http://h2635187.stratoserver.net/repo/composer/dist/heimans/yadal/heimans-yadal-448fd96c0c10f2c6513a29d4cf85af0eb14dbde0-zip-c18035.zip",
+            "reference": "448fd96c0c10f2c6513a29d4cf85af0eb14dbde0",
+            "shasum": "9801df36590bda2df3921243a5dd3b26c05a1b9d"
         },
-        "time": "2018-01-16T16:00:32+00:00",
+        "time": "2018-01-17T10:00:37+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/yadal.class.php"
+            ]
+        },
+        "authors": [
+            {
+                "name": "Teye Heimans",
+                "email": "post@teyeheimans.nl",
+                "role": "Developer"
+            },
+            {
+                "name": "Ramon Rosin (ramon1611)",
+                "email": "rosin.ramon@gmail.com",
+                "role": "Composer Package"
+            }
+        ],
+        "description": "Database Abstraction Layer",
+        "support": {
+            "source": "https://github.com/ramon1611/Yadal/tree/1.0.0",
+            "issues": "https://github.com/ramon1611/Yadal/issues"
+        }
+    },
+    {
+        "name": "ramon1611/session",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ramon1611/Session.git",
+            "reference": "a187383d64eec50970108504080ee5f259250dad"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "http://h2635187.stratoserver.net/repo/composer/dist/ramon1611/session/ramon1611-session-a187383d64eec50970108504080ee5f259250dad-zip-1b369e.zip",
+            "reference": "a187383d64eec50970108504080ee5f259250dad",
+            "shasum": "3584d2588d9c13b0866c7e2baf4c74b352d24779"
+        },
+        "time": "2018-01-17T11:00:12+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "ramon1611\\Libs\\": "libs/"
+            }
+        },
+        "license": [
+            "CC-BY-SA-4.0"
+        ],
+        "authors": [
+            {
+                "name": "Ramon Rosin (ramon1611)",
+                "email": "rosin.ramon@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Session Class",
+        "support": {
+            "source": "https://github.com/ramon1611/Session/tree/master",
+            "issues": "https://github.com/ramon1611/Session/issues"
+        }
+    },
+    {
+        "name": "ramon1611/sqlquerybuilder",
+        "version": "1.0.1.2",
+        "version_normalized": "1.0.1.2",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ramon1611/SQLQueryBuilder.git",
+            "reference": "72822b359384e3cfbbf2c6a5c07976f883d219f5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "http://h2635187.stratoserver.net/repo/composer/dist/ramon1611/sqlquerybuilder/ramon1611-sqlquerybuilder-72822b359384e3cfbbf2c6a5c07976f883d219f5-zip-23e460.zip",
+            "reference": "72822b359384e3cfbbf2c6a5c07976f883d219f5",
+            "shasum": "90e94c3f364f3668764f36b32169387832b42da4"
+        },
+        "time": "2018-01-17T08:51:41+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -34,7 +114,7 @@
         ],
         "description": "Build SQL Querys",
         "support": {
-            "source": "https://github.com/ramon1611/SQLQueryBuilder/tree/1.0.1.1",
+            "source": "https://github.com/ramon1611/SQLQueryBuilder/tree/master",
             "issues": "https://github.com/ramon1611/SQLQueryBuilder/issues"
         }
     },

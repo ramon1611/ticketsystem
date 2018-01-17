@@ -5,9 +5,12 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 7:09:07 am
+ * Last Modified: Wednesday, 17th January 2018 12:12:15 pm
  * Modified By: ramon1611
  */
+
+namespace ramon1611;
+
 //* System Handlers
 foreach ( $path['includes']['system_handlers'] as $handlerPath ) {
     if ( file_exists( $handlerPath ) )

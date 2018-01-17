@@ -5,10 +5,13 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 7:11:04 am
+ * Last Modified: Wednesday, 17th January 2018 12:26:06 pm
  * Modified By: ramon1611
  */
-#error_reporting( E_ALL & ~(E_STRICT|E_NOTICE) );
+
+namespace ramon1611;
+
+error_reporting( E_ALL & ~(E_STRICT|E_NOTICE) );
 #error_reporting( E_ALL ); //! #DEBUG
 
 session_start();

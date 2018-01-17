@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Tuesday, 16th January 2018 4:59:15 pm
+ * Last Modified: Wednesday, 17th January 2018 12:09:02 pm
  * Modified By: ramon1611
  */
 
@@ -36,8 +36,6 @@ $path = array(
 
 	'libsDir'		=> $hostInfo['baseDir'].'/libs',
 	'libs' 			=> array(
-        'yadal'		=> $hostInfo['baseDir'].'/libs/yadal/yadal.class.php',
-		'session'	=> $hostInfo['baseDir'].'/libs/session.class.php',
 		'nekwitaya'	=> $hostInfo['baseDir'].'/libs/nekwitaya/nekwitaya-framework.class.php'
 	),
 
@@ -78,12 +76,10 @@ $styles = NULL;
 
 //* Initialization Code
 // Include Required Files
-$loader = require_once( $path['composer']['autoload'] );
+$classLoader = require_once( $path['composer']['autoload'] );
 require_once( $path['includes']['error_handler'] );
 require_once( $path['configFile'] );
 require_once( $path['includes']['class_loader'] );
-
-var_dump($loader);
 
 // Initialize Smarty
 $smarty = new \Smarty();
@@ -100,7 +96,6 @@ if ( ! $db->Connect( $dbInfo['host'], $dbInfo['username'], $dbInfo['password'] )
 }
 
 // Initialize SQLQuery
-//use ramon1611\Libs\SQLQueryBuilder;
 $query = new Libs\SQLQueryBuilder();
 
 // Load DB-Data + Handler Detection

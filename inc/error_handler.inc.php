@@ -5,9 +5,11 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * Author: ramon1611
  * -----
- * Last Modified: Wednesday, 20th December 2017 9:49:21 am
+ * Last Modified: Wednesday, 17th January 2018 12:27:04 pm
  * Modified By: ramon1611
  */
+
+namespace ramon1611;
 
 function error_handler ( $errno, $errstr, $errfile, $errline, array $errcontext ) {
     $excludeFiles = array(
@@ -134,5 +136,5 @@ function generateError( $errfile, $errline, $errstr, array $errcontext, $title =
     </html>' );           
 }
 
-$alter_error_handler = set_error_handler( 'error_handler' );
+$alter_error_handler = set_error_handler( 'ramon1611\error_handler' );
 ?>

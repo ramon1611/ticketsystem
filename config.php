@@ -5,9 +5,11 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 15th January 2018 9:03:14 am
+ * Last Modified: Wednesday, 17th January 2018 12:15:47 pm
  * Modified By: ramon1611
  */
+
+namespace ramon1611;
 
 $dbInfo = array(
 	'host'		=> 'idb',#'idb',

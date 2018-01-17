@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit01e1cd5d74ea132d72c94bda0f4e4531
 {
     public static $files = array (
+        'd8b5278111188a5ca1c2297dc31c4de2' => __DIR__ . '/..' . '/heimans/yadal/src/yadal.class.php',
         'f084d01b0a599f67676cffef638aa95b' => __DIR__ . '/..' . '/smarty/smarty/libs/bootstrap.php',
     );
 
@@ -20,7 +21,8 @@ class ComposerStaticInit01e1cd5d74ea132d72c94bda0f4e4531
     public static $prefixDirsPsr4 = array (
         'ramon1611\\Libs\\' => 
         array (
-            0 => __DIR__ . '/..' . '/ramon1611/sqlquerybuilder/libs',
+            0 => __DIR__ . '/..' . '/ramon1611/session/libs',
+            1 => __DIR__ . '/..' . '/ramon1611/sqlquerybuilder/libs',
         ),
     );
 

@@ -5,9 +5,12 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 7:10:18 am
+ * Last Modified: Wednesday, 17th January 2018 12:13:16 pm
  * Modified By: ramon1611
  */
+
+namespace ramon1611;
+
 //* Load Config
 $sql = $db->query( $query->select( $tables['settings'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
