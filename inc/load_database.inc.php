@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:13:16 pm
+ * Last Modified: Thursday, 18th January 2018 2:17:52 pm
  * Modified By: ramon1611
  */
 
@@ -25,7 +25,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Pages
-$sql = $db->query( $query->select( $tables['pages'], $query::SELECT_ALL_COLUMNS, false ).' '.$query->order( array($columns['pages']['ID']) ) );
+$sql = $db->query( $query->select( $tables['pages'], $query::SELECT_ALL_COLUMNS, false ).' '.$query->where( '('.$columns['pages']['viewInNav'].' = 1 AND '.$columns['pages']['order'].' IS NOT NULL)', false ).' '.$query->order( array($columns['pages']['order']) ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result ) {
@@ -34,7 +34,8 @@ if ( $sql ) {
                 'name'          => $result[$columns['pages']['name']],
                 'displayName'   => $result[$columns['pages']['displayName']],
                 'styles'        => $result[$columns['pages']['styles']],
-                'viewInNav'     => $result[$columns['pages']['viewInNav']]
+                'viewInNav'     => $result[$columns['pages']['viewInNav']],
+                'order'         => $result[$columns['pages']['order']]
             );
         } else
 			trigger_error( 'The page could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['pages'].')]', E_USER_ERROR );

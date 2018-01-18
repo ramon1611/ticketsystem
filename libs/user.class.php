@@ -5,12 +5,18 @@
  * File Created: Tuesday, 19th December 2017 12:44:29 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 4:31:05 pm
+ * Last Modified: Thursday, 18th January 2018 11:06:56 am
  * Modified By: ramon1611
  */
 
-namespace ramon1611;
+namespace ramon1611\Libs;
 
+/**
+ * Class ramon1611\Libs\User
+ * 
+ * @api
+ * @package user
+ */
 class User {
     private $_id = NULL;
     private $_name = NULL;

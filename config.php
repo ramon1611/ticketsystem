@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:15:47 pm
+ * Last Modified: Thursday, 18th January 2018 12:01:42 pm
  * Modified By: ramon1611
  */
 
@@ -40,7 +40,8 @@ $columns = array(
         'name'          => 'name',
         'displayName'   => 'displayName',
         'styles'        => 'stylesheets',
-        'viewInNav'     => 'viewInNav'
+        'viewInNav'     => 'viewInNav',
+        'order'         => '[order]'
     ),
 
     'sessions'  => array(

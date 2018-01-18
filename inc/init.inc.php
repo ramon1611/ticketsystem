@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 4:14:12 pm
+ * Last Modified: Thursday, 18th January 2018 11:58:27 am
  * Modified By: ramon1611
  */
 
@@ -53,11 +53,12 @@ $path = array(
 $page = array(
 	'ID'		=> NULL, // = pageID from DB
 	'name'		=> NULL, // = name from DB
-	'title'		=> NULL, // = displayName from DB + Postfix
+	'title'		=> NULL, // = displayName from DB + Suffix
 	'caption'	=> NULL, // = displayName from DB
-	'href'		=> NULL,
-	'items'		=> NULL,
-	'styles'	=> NULL
+    'href'		=> NULL,
+    'styles'	=> NULL, // = stylesheets from DB
+    'order'     => NULL, // = order from DB
+	'items'		=> NULL  // Array of Page-Arrays
 );
 
 $session = array(

@@ -1,6 +1,6 @@
 {* Smarty *}
 {if $tpl_name == 'login'}
-    {include file='login.tpl'}
+    {include file="$tpl_name.tpl"}
 {else}
 <!DOCTYPE html>
 <html>
@@ -28,7 +28,6 @@
             </nav>
         </header>
         
-
         {include file="$tpl_name.tpl"}
 
         <footer></footer>
