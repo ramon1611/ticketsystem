@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6ca7d5bed23481ff23c253711c9fe38",
+    "content-hash": "262d3df46743526dd959bd913e3d769a",
     "packages": [
         {
             "name": "heimans/yadal",
@@ -118,6 +118,44 @@
                 "issues": "https://github.com/ramon1611/SQLQueryBuilder/issues"
             },
             "time": "2018-01-17T08:51:41+00:00"
+        },
+        {
+            "name": "ramon1611/user",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramon1611/User.git",
+                "reference": "a64c57f14e7fe2471fa1cd987fec7dfb87d58405"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://h2635187.stratoserver.net/repo/composer/dist/ramon1611/user/ramon1611-user-a64c57f14e7fe2471fa1cd987fec7dfb87d58405-zip-c23cae.zip",
+                "reference": "a64c57f14e7fe2471fa1cd987fec7dfb87d58405",
+                "shasum": "35f20d00a058b33a7c6638730a1ffb1583894559"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ramon1611\\Libs\\": "libs/"
+                }
+            },
+            "license": [
+                "CC-BY-SA-4.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ramon Rosin (ramon1611)",
+                    "email": "rosin.ramon@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "User Class",
+            "homepage": "https://github.com/ramon1611/User",
+            "support": {
+                "source": "https://github.com/ramon1611/User/tree/1.0.0",
+                "issues": "https://github.com/ramon1611/User/issues"
+            },
+            "time": "2018-01-22T10:15:06+00:00"
         },
         {
             "name": "smarty/smarty",

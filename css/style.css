@@ -4,7 +4,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 7:10:03 am
+ * Last Modified: Monday, 22nd January 2018 3:46:19 pm
  * Modified By: ramon1611
  */
 
@@ -125,13 +125,25 @@ div.table {
     border-collapse: collapse;
 }
 
+.full {
+    width: 100%;
+}
+
 div.tr {
     display: table-row;
+}
+
+div.tr-header {
+    background-color: #5D7B9D;
 }
 
 div.td {
     display:table-cell;
     padding:5px; 
+}
+
+div.td-header {
+    color: #FFF;
 }
 
 div.td-border {
