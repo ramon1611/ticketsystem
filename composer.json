@@ -26,6 +26,7 @@
 	"require": {
 		"ramon1611/sqlquerybuilder": "^1.0.1.2",
 		"ramon1611/session": "^1.0.0",
+		"ramon1611/user": "^1.0.0",
 		"smarty/smarty": "^3.1",
 		"heimans/yadal": "^1.0.0"
 	}
