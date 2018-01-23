@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * @author ramon1611
  * -----
- * Last Modified: Thursday, 18th January 2018 2:17:52 pm
+ * Last Modified: Tuesday, 23rd January 2018 7:36:16 pm
  * Modified By: ramon1611
  */
 
@@ -87,5 +87,41 @@ if ( $sql ) {
     }
 } else
     trigger_error( 'No sessions could be retrieved from the database! [$db->query(@query:*|'.tables['sessions'].')]', E_USER_ERROR );
+unset( $sql, $result );
+
+//* Load Tickets
+$sql = $db->query( $query->select( $tables['tickets'], $query::SELECT_ALL_COLUMNS ) );
+if ( $sql ) {
+    while ( $result = $db->getRecord( $sql ) ) {
+        if ( $result ) {
+            $tickets[$result[$columns['tickets']['ID']]] = array(
+                'from'          => $result[$columns['tickets']['from']],
+                'subject'       => $result[$columns['tickets']['subject']],
+                'timestamp'     => $result[$columns['tickets']['timestamp']],
+                'ownerID'       => $result[$columns['tickets']['ownerID']],
+                'customerID'    => $result[$columns['tickets']['customerID']],
+                'status'        => $result[$columns['tickets']['status']]
+            );
+        } else
+            trigger_error( 'The ticket could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['tickets'].')]', E_USER_ERROR );
+    }
+} else
+    trigger_error( 'No tickets could be retrieved from the database! [$db->query(@query:*|'.tables['tickets'].')]', E_USER_ERROR );
+unset( $sql, $result );
+
+//* Load Labels
+$sql = $db->query( $query->select( $tables['labels'], $query::SELECT_ALL_COLUMNS ) );
+if ( $sql ) {
+    while ( $result = $db->getRecord( $sql ) ) {
+        if ( $result ) {
+            $labels[$result[$columns['labels']['ID']]] = array(
+                'name'          => $result[$columns['labels']['name']],
+                'dislpayName'   => $result[$columns['labels']['displayName']]
+            );
+        } else
+            trigger_error( 'The label could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['labels'].')]', E_USER_ERROR );
+    }
+} else
+    trigger_error( 'No labels could be retrieved from the database! [$db->query(@query:*|'.tables['labels'].')]', E_USER_ERROR );
 unset( $sql, $result );
 ?>

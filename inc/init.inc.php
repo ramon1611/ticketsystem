@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 22nd January 2018 8:20:27 am
+ * Last Modified: Tuesday, 23rd January 2018 7:32:15 pm
  * Modified By: ramon1611
  */
 
@@ -24,6 +24,7 @@ $path = array(
         'handler_detection'		=> $hostInfo['baseDir'].'/inc/handler_detection.inc.php',
         'load_database'         => $hostInfo['baseDir'].'/inc/load_database.inc.php',
         'class_loader'          => $hostInfo['baseDir'].'/inc/class_loader.inc.php',
+        'labels'                => $hostInfo['baseDir'].'/inc/labels.inc.php',
         
         'user_handlersDir'		=> $hostInfo['baseDir'].'/inc/user_handlers',
 		'system_handlersDir'	=> $hostInfo['baseDir'].'/inc/system_handlers',
@@ -74,6 +75,8 @@ $user = array(
 $settings = NULL;
 $strings = NULL;
 $styles = NULL;
+$tickets = NULL;
+$labels = NULL;
 
 //* Initialization Code
 // Include Required Files
@@ -93,15 +96,29 @@ $smarty->setCacheDir( $path['cache'] );
 $db = newYadal( $dbInfo['database'], $dbInfo['dbType'] );
 if ( ! $db->Connect( $dbInfo['host'], $dbInfo['username'], $dbInfo['password'] ) ) {
 	$db->Close();
-	trigger_error( 'Es konnte keine Verbindung zur Datenbank hergestellt werden!', E_USER_ERROR );
-}
+	trigger_error( 'A connection to the database could not be established!', E_USER_ERROR );
+} else
+    $GLOBALS['db'] = $db;
 
 // Initialize SQLQuery
 $query = new Libs\SQLQueryBuilder();
+$GLOBALS['query'] = $query;
 
 // Load DB-Data + Handler Detection
 require_once( $path['includes']['load_database'] );
 require_once( $path['includes']['handler_detection'] );
+
+// Handle Tickets+Labels
+require_once( $path['includes']['labels'] );
+
+foreach ( $tickets as $ticketID => $ticketData ) {
+    $labelList = getLabelsOfTicket( $ticketID );
+
+    if ( isset( $labelList ) && $labelList )
+        $tickets[$ticketID]['labels'] = $labelList;
+    else
+        trigger_error( 'No labels could be assigned to the tickets!', E_USER_ERROR );
+}
 
 // Assign Smarty Vars
 $smarty->assign( 'tpl_name', $page['name'] );
@@ -109,6 +126,9 @@ $smarty->assign( 'path', $path );
 $smarty->assign( 'page', $page );
 $smarty->assign( 'settings', $settings );
 $smarty->assign( 'strings', $strings );
+$smarty->assign( 'tickets', $tickets );
+$smarty->assign( 'labels', $labels );
+
 
 // Display Smarty Template
 $smarty->display( 'main.tpl' );
