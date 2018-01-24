@@ -5,14 +5,14 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:12:15 pm
+ * Last Modified: Wednesday, 24th January 2018 5:38:07 pm
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
 //* System Handlers
-foreach ( $path['includes']['system_handlers'] as $handlerPath ) {
+foreach ( $GLOBALS['path']['includes']['system_handlers'] as $handlerPath ) {
     if ( file_exists( $handlerPath ) )
         require_once( $handlerPath );
     else
@@ -25,7 +25,7 @@ if ( isset( $_GET['handler'] ) ) {
 
     if ( isset( $_GET['action'] ) ) {
         $_handlerAction = $_GET['action'];
-        $handlerPath = $path['includes']['user_handlersDir'].'/'.$handler.'.inc.php';
+        $handlerPath = $GLOBALS['path']['includes']['user_handlersDir'].'/'.$handler.'.inc.php';
 
         if ( file_exists( $handlerPath ) )
             require_once( $handlerPath );

@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:26:06 pm
+ * Last Modified: Wednesday, 24th January 2018 5:51:29 pm
  * Modified By: ramon1611
  */
 
@@ -18,7 +18,7 @@ session_start();
 ob_start();
 
 
-$hostInfo = array(
+$GLOBALS['hostInfo'] = array(
 	'baseDir'		=> __DIR__,
 	'docRoot'		=> preg_replace("!{$_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']),
 	'baseUrl'		=> preg_replace('!^' . preg_replace("!{$_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']) . '!', '', __DIR__) . '/',
@@ -46,5 +46,5 @@ function debug( $var, $die = false ) {
 }
 //! #DEBUG:END
 
-require_once( $hostInfo['baseDir'] . '/inc/init.inc.php' );
+require_once( $GLOBALS['hostInfo']['baseDir'] . '/inc/init.inc.php' );
 ?>

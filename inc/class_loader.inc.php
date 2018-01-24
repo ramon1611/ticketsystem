@@ -5,13 +5,13 @@
  * File Created: Wednesday, 20th December 2017 8:35:54 am
  * Author: ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:13:08 pm
+ * Last Modified: Wednesday, 24th January 2018 5:37:49 pm
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
-foreach ( $path['libs'] as $libName => $libPath ) {
+foreach ( $GLOBALS['path']['libs'] as $libName => $libPath ) {
     if ( file_exists( $libPath ) ) {
         require_once( $libPath );
     } else

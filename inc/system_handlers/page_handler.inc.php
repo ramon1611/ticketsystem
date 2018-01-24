@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:14:28 pm
+ * Last Modified: Wednesday, 24th January 2018 5:48:34 pm
  * Modified By: ramon1611
  */
 
@@ -18,16 +18,16 @@ else
 
 foreach ( $pageParams as $name => $value ) {
     if ( $name == 'page' ) {
-        if ( isset( $page['items'][$value] ) ) {
-            $page['ID']         = $page['items'][$value]['ID'];
-            $page['name']       = $value;
-            $page['title']      = $page['items'][$value]['displayName'].$settings['page.title.delimeter'].$strings['main.title.postfix'];
-            $page['caption']    = $page['items'][$value]['displayName'];
-            $page['href']       = $settings['url.index.fileName'].'?'.$settings['url.index.pageIdentifier'].'='.$page['items'][$value]['name'];
+        if ( isset( $GLOBALS['page']['items'][$value] ) ) {
+            $GLOBALS['page']['ID']         = $GLOBALS['page']['items'][$value]['ID'];
+            $GLOBALS['page']['name']       = $value;
+            $GLOBALS['page']['title']      = $GLOBALS['page']['items'][$value]['displayName'].$GLOBALS['settings']['page.title.delimeter'].$GLOBALS['strings']['main.title.postfix'];
+            $GLOBALS['page']['caption']    = $GLOBALS['page']['items'][$value]['displayName'];
+            $GLOBALS['page']['href']       = $GLOBALS['settings']['url.index.fileName'].'?'.$GLOBALS['settings']['url.index.pageIdentifier'].'='.$GLOBALS['page']['items'][$value]['name'];
 
-            $pageStyles = explode( ',', $page['items'][$value]['styles'] );
+            $pageStyles = explode( ',', $GLOBALS['page']['items'][$value]['styles'] );
             foreach ( $pageStyles as $styleID )
-                $page['styles'][$styleID] = $path['styles'].'/'.$styles[$styleID]['fileName'];
+                $GLOBALS['page']['styles'][$styleID] = $GLOBALS['path']['styles'].'/'.$GLOBALS['styles'][$styleID]['fileName'];
         } else
             trigger_error( 'Page "'.$value.'" does not exist!', E_USER_ERROR );
     }

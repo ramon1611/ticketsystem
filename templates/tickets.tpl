@@ -21,7 +21,7 @@
             <div class="td">{$ticketData.status}</div>
             <div class="td">--IMPLEMENTATION-MISSING--</div>
             <div class="td">{$ticketData.ownerID}</div>
-            <div class="td">{$ticketData.customerID}</div>
+            <div class="td">{$ticketData.customerID}<br>{$customers[$ticketData.customerID].name}</div>
         </div>
     {/foreach}
 </div>

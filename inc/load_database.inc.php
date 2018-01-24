@@ -5,123 +5,139 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * @author ramon1611
  * -----
- * Last Modified: Tuesday, 23rd January 2018 7:36:16 pm
+ * Last Modified: Wednesday, 24th January 2018 5:56:24 pm
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
 //* Load Config
-$sql = $db->query( $query->select( $tables['settings'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $GLOBALS['tables']['settings'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
-			$settings[$result[$columns['settings']['name']]] = $result[$columns['settings']['value']];
+			$GLOBALS['settings'][$result[$GLOBALS['columns']['settings']['name']]] = $result[$GLOBALS['columns']['settings']['value']];
 		else
-			trigger_error( 'The setting could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['settings'].')]', E_USER_ERROR );
+			trigger_error( 'The setting could not be loaded from the database! [$db->getRecord(@res:*|'.$GLOBALS['tables']['settings'].')]', E_USER_ERROR );
 	}
 } else
-	trigger_error( 'No settings could be retrieved from the database! [$db->query(@query:*|'.$tables['settings'].')]', E_USER_ERROR );
+	trigger_error( 'No settings could be retrieved from the database! [$db->query(@query:*|'.$GLOBALS['tables']['settings'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
 //* Load Pages
-$sql = $db->query( $query->select( $tables['pages'], $query::SELECT_ALL_COLUMNS, false ).' '.$query->where( '('.$columns['pages']['viewInNav'].' = 1 AND '.$columns['pages']['order'].' IS NOT NULL)', false ).' '.$query->order( array($columns['pages']['order']) ) );
+$sql = $db->query( $query->select( $GLOBALS['tables']['pages'], $query::SELECT_ALL_COLUMNS, false ).' '.$query->where( '('.$GLOBALS['columns']['pages']['viewInNav'].' = 1 AND '.$GLOBALS['columns']['pages']['order'].' IS NOT NULL)', false ).' '.$query->order( array($GLOBALS['columns']['pages']['order']) ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result ) {
-			$page['items'][$result[$columns['pages']['name']]] = array(
-                'ID'            => $result[$columns['pages']['ID']],
-                'name'          => $result[$columns['pages']['name']],
-                'displayName'   => $result[$columns['pages']['displayName']],
-                'styles'        => $result[$columns['pages']['styles']],
-                'viewInNav'     => $result[$columns['pages']['viewInNav']],
-                'order'         => $result[$columns['pages']['order']]
+			$GLOBALS['page']['items'][$result[$GLOBALS['columns']['pages']['name']]] = array(
+                'ID'            => $result[$GLOBALS['columns']['pages']['ID']],
+                'name'          => $result[$GLOBALS['columns']['pages']['name']],
+                'displayName'   => $result[$GLOBALS['columns']['pages']['displayName']],
+                'styles'        => $result[$GLOBALS['columns']['pages']['styles']],
+                'viewInNav'     => $result[$GLOBALS['columns']['pages']['viewInNav']],
+                'order'         => $result[$GLOBALS['columns']['pages']['order']]
             );
         } else
-			trigger_error( 'The page could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['pages'].')]', E_USER_ERROR );
+			trigger_error( 'The page could not be loaded from the database! [$db->getRecord(@res:*|'.$GLOBALS['tables']['pages'].')]', E_USER_ERROR );
 	}
 } else
-	trigger_error( 'No pages could be retrieved from the database! [$db->query(@query:*|'.$tables['pages'].')]', E_USER_ERROR );
+	trigger_error( 'No pages could be retrieved from the database! [$db->query(@query:*|'.$GLOBALS['tables']['pages'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
 //* Load Strings
-$sql = $db->query( $query->select( $tables['strings'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $GLOBALS['tables']['strings'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
-			$strings[$result[$columns['strings']['name']]] = $result[$columns['strings']['value']];
+			$GLOBALS['strings'][$result[$GLOBALS['columns']['strings']['name']]] = $result[$GLOBALS['columns']['strings']['value']];
 		else
-			trigger_error( 'The string could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['strings'].')]', E_USER_ERROR );
+			trigger_error( 'The string could not be loaded from the database! [$db->getRecord(@res:*|'.$GLOBALS['tables']['strings'].')]', E_USER_ERROR );
 	}
 } else
-	trigger_error( 'No strings could be retrieved from the database! [$db->query(@query:*|'.$tables['strings'].')]', E_USER_ERROR );
+	trigger_error( 'No strings could be retrieved from the database! [$db->query(@query:*|'.$GLOBALS['tables']['strings'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
 //* Load Stylesheets
-$sql = $db->query( $query->select( $tables['styles'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $GLOBALS['tables']['styles'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
-            $styles[$result[$columns['styles']['ID']]] = array(
-                'name'      => $result[$columns['styles']['name']],
-                'fileName'  => $result[$columns['styles']['fileName']]
+            $GLOBALS['styles'][$result[$GLOBALS['columns']['styles']['ID']]] = array(
+                'name'      => $result[$GLOBALS['columns']['styles']['name']],
+                'fileName'  => $result[$GLOBALS['columns']['styles']['fileName']]
             );
 		else
-			trigger_error( 'The stylesheet could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['styles'].')]', E_USER_ERROR );
+			trigger_error( 'The stylesheet could not be loaded from the database! [$db->getRecord(@res:*|'.$GLOBALS['tables']['styles'].')]', E_USER_ERROR );
 	}
 } else
-	trigger_error( 'No stylesheets could be retrieved from the database! [$db->query(@query:*|'.$tables['styles'].')]', E_USER_ERROR );
+	trigger_error( 'No stylesheets could be retrieved from the database! [$db->query(@query:*|'.$GLOBALS['tables']['styles'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
 //* Load Sessions
-$sql = $db->query( $query->select( $tables['sessions'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $GLOBALS['tables']['sessions'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
         if ( $result ) {
-            $sessions['items'][$result[$columns['sessions']['ID']]] = array(
-                'userID'    => $result[$columns['sessions']['userID']],
-                'expire'    => $result[$columns['sessions']['expire']]
+            $GLOBALS['session']['items'][$result[$GLOBALS['columns']['sessions']['ID']]] = array(
+                'userID'    => $result[$GLOBALS['columns']['sessions']['userID']],
+                'expire'    => $result[$GLOBALS['columns']['sessions']['expire']]
             );
         } else
-            trigger_error( 'The session could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['sessions'].')]', E_USER_ERROR );
+            trigger_error( 'The session could not be loaded from the database! [$db->getRecord(@res:*|'.$GLOBALS['tables']['sessions'].')]', E_USER_ERROR );
     }
 } else
-    trigger_error( 'No sessions could be retrieved from the database! [$db->query(@query:*|'.tables['sessions'].')]', E_USER_ERROR );
+    trigger_error( 'No sessions could be retrieved from the database! [$db->query(@query:*|'.$GLOBALS['tables']['sessions'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
 //* Load Tickets
-$sql = $db->query( $query->select( $tables['tickets'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $GLOBALS['tables']['tickets'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
         if ( $result ) {
-            $tickets[$result[$columns['tickets']['ID']]] = array(
-                'from'          => $result[$columns['tickets']['from']],
-                'subject'       => $result[$columns['tickets']['subject']],
-                'timestamp'     => $result[$columns['tickets']['timestamp']],
-                'ownerID'       => $result[$columns['tickets']['ownerID']],
-                'customerID'    => $result[$columns['tickets']['customerID']],
-                'status'        => $result[$columns['tickets']['status']]
+            $GLOBALS['tickets'][$result[$GLOBALS['columns']['tickets']['ID']]] = array(
+                'from'          => $result[$GLOBALS['columns']['tickets']['from']],
+                'subject'       => $result[$GLOBALS['columns']['tickets']['subject']],
+                'timestamp'     => $result[$GLOBALS['columns']['tickets']['timestamp']],
+                'ownerID'       => $result[$GLOBALS['columns']['tickets']['ownerID']],
+                'customerID'    => $result[$GLOBALS['columns']['tickets']['customerID']],
+                'status'        => $result[$GLOBALS['columns']['tickets']['status']]
             );
         } else
-            trigger_error( 'The ticket could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['tickets'].')]', E_USER_ERROR );
+            trigger_error( 'The ticket could not be loaded from the database! [$db->getRecord(@res:*|'.$GLOBALS['tables']['tickets'].')]', E_USER_ERROR );
     }
 } else
-    trigger_error( 'No tickets could be retrieved from the database! [$db->query(@query:*|'.tables['tickets'].')]', E_USER_ERROR );
+    trigger_error( 'No tickets could be retrieved from the database! [$db->query(@query:*|'.$GLOBALS['tables']['tickets'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
 //* Load Labels
-$sql = $db->query( $query->select( $tables['labels'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $GLOBALS['tables']['labels'], $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
         if ( $result ) {
-            $labels[$result[$columns['labels']['ID']]] = array(
-                'name'          => $result[$columns['labels']['name']],
-                'dislpayName'   => $result[$columns['labels']['displayName']]
+            $GLOBALS['labels'][$result[$GLOBALS['columns']['labels']['ID']]] = array(
+                'name'          => $result[$GLOBALS['columns']['labels']['name']],
+                'dislpayName'   => $result[$GLOBALS['columns']['labels']['displayName']]
             );
         } else
-            trigger_error( 'The label could not be loaded from the database! [$db->getRecord(@res:*|'.$tables['labels'].')]', E_USER_ERROR );
+            trigger_error( 'The label could not be loaded from the database! [$db->getRecord(@res:*|'.$GLOBALS['tables']['labels'].')]', E_USER_ERROR );
     }
 } else
-    trigger_error( 'No labels could be retrieved from the database! [$db->query(@query:*|'.tables['labels'].')]', E_USER_ERROR );
+    trigger_error( 'No labels could be retrieved from the database! [$db->query(@query:*|'.$GLOBALS['tables']['labels'].')]', E_USER_ERROR );
+unset( $sql, $result );
+
+//* Load Customers
+$sql = $db->query( $query->select( $GLOBALS['tables']['customers'], $query::SELECT_ALL_COLUMNS ) );
+if ( $sql ) {
+    while ( $result = $db->getRecord( $sql ) ) {
+        if ( $result ) {
+            $customers[$result[$GLOBALS['columns']['customers']['ID']]] = array(
+                'name'          => $result[$GLOBALS['columns']['customers']['name']],
+                'contactPerson' => $result[$GLOBALS['columns']['customers']['contactPerson']]
+            );
+        } else
+            trigger_error( 'The customer could not be loaded from the database! [$db->getRecord(@res:*|'.$GLOBALS['tables']['customers'].')]', E_USER_ERROR );
+    }
+} else
+    trigger_error( 'No customers could be retrieved from the database! [$db->query(@query:*|'.$GLOBALS['tables']['customers'].')]', E_USER_ERROR );
 unset( $sql, $result );
 ?>

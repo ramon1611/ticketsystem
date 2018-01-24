@@ -5,13 +5,13 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Tuesday, 23rd January 2018 7:36:22 pm
+ * Last Modified: Wednesday, 24th January 2018 5:55:50 pm
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
-$dbInfo = array(
+$GLOBALS['dbInfo'] = array(
 	'host'		=> 'idb',#'idb',
 	'dbType'	=> 'mssql',#'mssql',
 	'database'	=> 'ticket',
@@ -19,9 +19,8 @@ $dbInfo = array(
 	'password'	=> 'china',
 	'charset'	=> 'utf8'
 );
-$GLOBALS['dbInfo'] = $dbInfo;
 
-$tables = array(
+$GLOBALS['tables'] = array(
     'settings'          => 'config',
     'pages'             => 'pages',
     'strings'           => 'strings',
@@ -29,11 +28,11 @@ $tables = array(
     'sessions'          => 'sessions',
     'tickets'           => 'tickets',
     'labels'            => 'labels',
-    'labels2tickets'    => 'labels2tickets'
+    'labels2tickets'    => 'labels2tickets',
+    'customers'         => 'customers'
 );
-$GLOBALS['tables'] = $tables;
 
-$columns = array(
+$GLOBALS['columns'] = array(
     'settings'  => array(
         'ID'    => 'settingID',
         'name'  => 'name',
@@ -86,7 +85,12 @@ $columns = array(
     'labels2tickets'    => array(
         'labelID'   => 'labelID',
         'ticketID'  => 'ticketID'
+    ),
+
+    'customers' => array(
+        'ID'            => 'customerID',
+        'name'          => 'name',
+        'contactPerson' => 'contactPerson'
     )
 );
-$GLOBALS['columns'] = $columns;
 ?>

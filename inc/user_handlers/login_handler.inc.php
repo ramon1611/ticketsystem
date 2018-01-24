@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * Author: ramon1611
  * -----
- * Last Modified: Wednesday, 17th January 2018 12:15:20 pm
+ * Last Modified: Wednesday, 24th January 2018 5:56:50 pm
  * Modified By: ramon1611
  */
 
@@ -22,20 +22,20 @@ if ( isset( $_handlerAction ) ) {
 
             $newSession = array(
                 'ID'        => NULL,
-                'userID'    => 0, //? $user['current']->get()['ID'],
-                'expire'    => microtime(true) + $settings['session.lifetime'],
+                'userID'    => 0, //? $GLOBALS['user']['current']->get()['ID'],
+                'expire'    => microtime(true) + $GLOBALS['settings']['session.lifetime'],
             );
     
             $cols = array(
-                $columns['sessions']['userID'],
-                $columns['sessions']['expire']
+                $GLOBALS['columns']['sessions']['userID'],
+                $GLOBALS['columns']['sessions']['expire']
             );
             $vals = array(
                 $newSession['userID'],
                 $newSession['expire']
             );
         
-            $sql = $db->query( $query->insert( $tables['sessions'], $cols, $vals ) );
+            $sql = $db->query( $query->insert( $GLOBALS['tables']['sessions'], $cols, $vals ) );
             if ( !$sql )
                 trigger_error( 'Could not create a new session!', E_USER_WARNING );
             unset( $sql );
