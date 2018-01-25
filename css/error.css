@@ -4,7 +4,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Sunday, 24th December 2017 7:09:25 am
+ * Last Modified: Thursday, 25th January 2018 1:18:36 am
  * Modified By: ramon1611
  */
 
@@ -42,7 +42,7 @@ header {
     font-size: 15pt;
 }
 
-.stacktrace {
+.backtrace {
     border: 2px solid #888;
 }
 

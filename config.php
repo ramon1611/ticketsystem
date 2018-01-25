@@ -5,15 +5,15 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 24th January 2018 5:55:50 pm
+ * Last Modified: Thursday, 25th January 2018 12:57:19 am
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
 $GLOBALS['dbInfo'] = array(
-	'host'		=> 'idb',#'idb',
-	'dbType'	=> 'mssql',#'mssql',
+	'host'		=> 'localhost',#'idb',
+	'dbType'	=> 'mysqli',#'mssql',
 	'database'	=> 'ticket',
 	'username'	=> 'ticket',
 	'password'	=> 'china',

@@ -8,17 +8,17 @@
     "packages": [
         {
             "name": "heimans/yadal",
-            "version": "1.0.0",
+            "version": "1.0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramon1611/Yadal.git",
-                "reference": "448fd96c0c10f2c6513a29d4cf85af0eb14dbde0"
+                "reference": "7aa9064a808f09343d408ef1404c644dc8b6d302"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://h2635187.stratoserver.net/repo/composer/dist/heimans/yadal/heimans-yadal-448fd96c0c10f2c6513a29d4cf85af0eb14dbde0-zip-c18035.zip",
-                "reference": "448fd96c0c10f2c6513a29d4cf85af0eb14dbde0",
-                "shasum": "9801df36590bda2df3921243a5dd3b26c05a1b9d"
+                "url": "http://h2635187.stratoserver.net/repo/composer/dist/heimans/yadal/heimans-yadal-7aa9064a808f09343d408ef1404c644dc8b6d302-zip-9cf9d4.zip",
+                "reference": "7aa9064a808f09343d408ef1404c644dc8b6d302",
+                "shasum": "018ebb5ffcbff28d04f93f5bca7fef1c77c9e719"
             },
             "type": "library",
             "autoload": {
@@ -39,11 +39,12 @@
                 }
             ],
             "description": "Database Abstraction Layer",
+            "homepage": "https://github.com/ramon1611/Yadal",
             "support": {
-                "source": "https://github.com/ramon1611/Yadal/tree/1.0.0",
+                "source": "https://github.com/ramon1611/Yadal/tree/1.0.1.5",
                 "issues": "https://github.com/ramon1611/Yadal/issues"
             },
-            "time": "2018-01-17T10:00:37+00:00"
+            "time": "2018-01-25T01:17:45+00:00"
         },
         {
             "name": "ramon1611/session",

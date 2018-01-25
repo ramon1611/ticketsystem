@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 24th January 2018 5:52:46 pm
+ * Last Modified: Thursday, 25th January 2018 3:27:04 am
  * Modified By: ramon1611
  */
 
@@ -81,10 +81,10 @@ $GLOBALS['customers'] = NULL;
 
 //* Initialization Code
 // Include Required Files
-$GLOBALS['classLoader'] = require_once( $GLOBALS['path']['composer']['autoload'] );
 require_once( $GLOBALS['path']['includes']['error_handler'] );
 require_once( $GLOBALS['path']['configFile'] );
 require_once( $GLOBALS['path']['includes']['class_loader'] );
+$GLOBALS['classLoader'] = require_once( $GLOBALS['path']['composer']['autoload'] );
 
 // Initialize Smarty
 $smarty = new \Smarty();
@@ -97,7 +97,7 @@ $smarty->setCacheDir( $GLOBALS['path']['cache'] );
 $db = newYadal( $GLOBALS['dbInfo']['database'], $GLOBALS['dbInfo']['dbType'] );
 if ( ! $db->Connect( $GLOBALS['dbInfo']['host'], $GLOBALS['dbInfo']['username'], $GLOBALS['dbInfo']['password'] ) ) {
 	$db->Close();
-	trigger_error( 'A connection to the database could not be established!', E_USER_ERROR );
+	trigger_error( 'A connection to the database could not be established!<br><strong>DB Message:</strong> '.$db->getError(), E_USER_ERROR );
 } else
     $GLOBALS['db'] = $db;
 
@@ -112,6 +112,7 @@ require_once( $GLOBALS['path']['includes']['handler_detection'] );
 // Handle Tickets+Labels
 require_once( $GLOBALS['path']['includes']['labels'] );
 
+if ( is_array( $GLOBALS['tickets'] ) || is_object( $GLOBALS['tickets'] ) )
 foreach ( $GLOBALS['tickets'] as $ticketID => $ticketData ) {
     $labelList = getLabelsOfTicket( $ticketID );
 

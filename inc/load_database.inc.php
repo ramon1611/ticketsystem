@@ -5,14 +5,14 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 24th January 2018 5:56:24 pm
+ * Last Modified: Thursday, 25th January 2018 3:19:34 am
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
 //* Load Config
-$sql = $db->query( $query->select( $GLOBALS['tables']['settings'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $db->quote( $GLOBALS['tables']['settings'] ), $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
@@ -25,7 +25,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Pages
-$sql = $db->query( $query->select( $GLOBALS['tables']['pages'], $query::SELECT_ALL_COLUMNS, false ).' '.$query->where( '('.$GLOBALS['columns']['pages']['viewInNav'].' = 1 AND '.$GLOBALS['columns']['pages']['order'].' IS NOT NULL)', false ).' '.$query->order( array($GLOBALS['columns']['pages']['order']) ) );
+$sql = $db->query( $query->select( $db->quote( $GLOBALS['tables']['pages'] ), $query::SELECT_ALL_COLUMNS, false ).' '.$query->where( '('.$db->quote( $GLOBALS['columns']['pages']['viewInNav'] ).' = 1 AND '.$db->quote( $GLOBALS['columns']['pages']['order'] ).' IS NOT NULL)', false ).' '.$query->order( array( $db->quote( $GLOBALS['columns']['pages']['order'] ) ) ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result ) {
@@ -45,7 +45,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Strings
-$sql = $db->query( $query->select( $GLOBALS['tables']['strings'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $db->quote( $GLOBALS['tables']['strings'] ), $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
@@ -58,7 +58,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Stylesheets
-$sql = $db->query( $query->select( $GLOBALS['tables']['styles'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $db->quote( $GLOBALS['tables']['styles'] ), $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
 	while ( $result = $db->getRecord( $sql ) ) {
 		if ( $result )
@@ -74,7 +74,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Sessions
-$sql = $db->query( $query->select( $GLOBALS['tables']['sessions'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $db->quote( $GLOBALS['tables']['sessions'] ), $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
         if ( $result ) {
@@ -90,7 +90,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Tickets
-$sql = $db->query( $query->select( $GLOBALS['tables']['tickets'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $db->quote( $GLOBALS['tables']['tickets'] ), $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
         if ( $result ) {
@@ -110,7 +110,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Labels
-$sql = $db->query( $query->select( $GLOBALS['tables']['labels'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $db->quote( $GLOBALS['tables']['labels'] ), $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
         if ( $result ) {
@@ -126,7 +126,7 @@ if ( $sql ) {
 unset( $sql, $result );
 
 //* Load Customers
-$sql = $db->query( $query->select( $GLOBALS['tables']['customers'], $query::SELECT_ALL_COLUMNS ) );
+$sql = $db->query( $query->select( $db->quote( $GLOBALS['tables']['customers'] ), $query::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
     while ( $result = $db->getRecord( $sql ) ) {
         if ( $result ) {
