@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Wednesday, 24th January 2018 5:51:29 pm
+ * Last Modified: Thursday, 25th January 2018 10:33:10 am
  * Modified By: ramon1611
  */
 
@@ -44,6 +44,10 @@ function debug( $var, $die = false ) {
 	if ( $die )
 		die();
 }
+
+$debugFile = $GLOBALS['hostInfo']['baseDir'] . '/debug.php';
+if ( file_exists( $debugFile ) )
+    require_once( $debugFile );
 //! #DEBUG:END
 
 require_once( $GLOBALS['hostInfo']['baseDir'] . '/inc/init.inc.php' );

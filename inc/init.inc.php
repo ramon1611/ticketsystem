@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Thursday, 25th January 2018 3:27:04 am
+ * Last Modified: Thursday, 25th January 2018 5:56:01 pm
  * Modified By: ramon1611
  */
 
@@ -15,23 +15,26 @@ namespace ramon1611;
 $GLOBALS['path'] = array(
 	'root'			=> $GLOBALS['hostInfo']['baseDir'],
 	'index'			=> $GLOBALS['hostInfo']['baseDir'].'/index.php',
-	'configFile'	=> $GLOBALS['hostInfo']['baseDir'].'/config.php',
+	'configFile'    => $GLOBALS['hostInfo']['baseDir'].'/config.php',
 
 	'includesDir'	=> $GLOBALS['hostInfo']['baseDir'].'/inc',
 	'includes'		=> array(
 		'init'					=> $GLOBALS['hostInfo']['baseDir'].'/inc/init.inc.php',
 		'error_handler'			=> $GLOBALS['hostInfo']['baseDir'].'/inc/error_handler.inc.php',
-        'handler_detection'		=> $GLOBALS['hostInfo']['baseDir'].'/inc/handler_detection.inc.php',
+        'handler_detection'	    => $GLOBALS['hostInfo']['baseDir'].'/inc/handler_detection.inc.php',
         'load_database'         => $GLOBALS['hostInfo']['baseDir'].'/inc/load_database.inc.php',
         'class_loader'          => $GLOBALS['hostInfo']['baseDir'].'/inc/class_loader.inc.php',
-        'labels'                => $GLOBALS['hostInfo']['baseDir'].'/inc/labels.inc.php',
         
         'user_handlersDir'		=> $GLOBALS['hostInfo']['baseDir'].'/inc/user_handlers',
 		'system_handlersDir'	=> $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers',
 
-        'system_handlers'		=> array(	//! Order by Priority
-			'session_handler'	=> $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/session_handler.inc.php',
-			'page_handler'		=> $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/page_handler.inc.php'
+        'system_handlers'   => array(	//! Order by Priority
+			'session_handler'	    => $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/session_handler.inc.php',
+            'page_handler'		    => $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/page_handler.inc.php',
+            'group_handler'         => $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/group_handler.inc.php',
+            'permission_handler'    => $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/permission_handler.inc.php',
+            'label_handler'         => $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/label_handler.inc.php',
+            'ticket_handler'        => $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/ticket_handler.inc.php'
 		)
 	),
 
@@ -78,6 +81,8 @@ $GLOBALS['styles'] = NULL;
 $GLOBALS['tickets'] = NULL;
 $GLOBALS['labels'] = NULL;
 $GLOBALS['customers'] = NULL;
+$GLOBALS['groups'] = NULL;
+$GLOBALS['permissions'] = NULL;
 
 //* Initialization Code
 // Include Required Files
@@ -87,11 +92,11 @@ require_once( $GLOBALS['path']['includes']['class_loader'] );
 $GLOBALS['classLoader'] = require_once( $GLOBALS['path']['composer']['autoload'] );
 
 // Initialize Smarty
-$smarty = new \Smarty();
-$smarty->setTemplateDir( $GLOBALS['path']['templates'] );
-$smarty->setCompileDir( $GLOBALS['path']['templates_compiled'] );
-$smarty->setConfigDir( $GLOBALS['path']['config'] );
-$smarty->setCacheDir( $GLOBALS['path']['cache'] );
+$GLOBALS['smarty'] = new \Smarty();
+$GLOBALS['smarty']->setTemplateDir( $GLOBALS['path']['templates'] );
+$GLOBALS['smarty']->setCompileDir( $GLOBALS['path']['templates_compiled'] );
+$GLOBALS['smarty']->setConfigDir( $GLOBALS['path']['config'] );
+$GLOBALS['smarty']->setCacheDir( $GLOBALS['path']['cache'] );
 
 // Connect to Database
 $db = newYadal( $GLOBALS['dbInfo']['database'], $GLOBALS['dbInfo']['dbType'] );
@@ -101,39 +106,25 @@ if ( ! $db->Connect( $GLOBALS['dbInfo']['host'], $GLOBALS['dbInfo']['username'],
 } else
     $GLOBALS['db'] = $db;
 
-// Initialize SQLQuery
-$query = new Libs\SQLQueryBuilder();
-$GLOBALS['query'] = $query;
+// Initialize SQLQueryBuilder
+$GLOBALS['query'] = new Libs\SQLQueryBuilder();
 
 // Load DB-Data + Handler Detection
 require_once( $GLOBALS['path']['includes']['load_database'] );
 require_once( $GLOBALS['path']['includes']['handler_detection'] );
 
-// Handle Tickets+Labels
-require_once( $GLOBALS['path']['includes']['labels'] );
-
-if ( is_array( $GLOBALS['tickets'] ) || is_object( $GLOBALS['tickets'] ) )
-foreach ( $GLOBALS['tickets'] as $ticketID => $ticketData ) {
-    $labelList = getLabelsOfTicket( $ticketID );
-
-    if ( isset( $labelList ) && $labelList )
-        $GLOBALS['tickets'][$ticketID]['labels'] = $labelList;
-    else
-        trigger_error( 'No labels could be assigned to the tickets!', E_USER_ERROR );
-}
-
 // Assign Smarty Vars
-$smarty->assign( 'tpl_name', $GLOBALS['page']['name'] );
-$smarty->assign( 'path', $GLOBALS['path'] );
-$smarty->assign( 'page', $GLOBALS['page'] );
-$smarty->assign( 'settings', $GLOBALS['settings'] );
-$smarty->assign( 'strings', $GLOBALS['strings'] );
-$smarty->assign( 'tickets', $GLOBALS['tickets'] );
-$smarty->assign( 'labels', $GLOBALS['labels'] );
-$smarty->assign( 'customers', $GLOBALS['customers'] );
-
+$GLOBALS['smarty']->assign( 'tpl_name', $GLOBALS['page']['name'] );
+$GLOBALS['smarty']->assign( 'path', $GLOBALS['path'] );
+$GLOBALS['smarty']->assign( 'page', $GLOBALS['page'] );
+$GLOBALS['smarty']->assign( 'settings', $GLOBALS['settings'] );
+$GLOBALS['smarty']->assign( 'strings', $GLOBALS['strings'] );
+$GLOBALS['smarty']->assign( 'tickets', $GLOBALS['tickets'] );
+$GLOBALS['smarty']->assign( 'labels', $GLOBALS['labels'] );
+$GLOBALS['smarty']->assign( 'customers', $GLOBALS['customers'] );
+$GLOBALS['smarty']->assign( 'users', $GLOBALS['user'] );
 
 // Display Smarty Template
-$smarty->display( 'main.tpl' );
+$GLOBALS['smarty']->display( $GLOBALS['settings']['templates.masterTemplate'] );
 ob_end_flush();
 ?>

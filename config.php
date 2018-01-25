@@ -5,15 +5,15 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Thursday, 25th January 2018 12:57:19 am
+ * Last Modified: Thursday, 25th January 2018 2:20:57 pm
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
 $GLOBALS['dbInfo'] = array(
-	'host'		=> 'localhost',#'idb',
-	'dbType'	=> 'mysqli',#'mssql',
+	'host'		=> 'idb',#'idb',
+	'dbType'	=> 'mssql',#'mssql',
 	'database'	=> 'ticket',
 	'username'	=> 'ticket',
 	'password'	=> 'china',
@@ -21,15 +21,20 @@ $GLOBALS['dbInfo'] = array(
 );
 
 $GLOBALS['tables'] = array(
-    'settings'          => 'config',
-    'pages'             => 'pages',
-    'strings'           => 'strings',
-    'styles'            => 'stylesheets',
-    'sessions'          => 'sessions',
-    'tickets'           => 'tickets',
-    'labels'            => 'labels',
-    'labels2tickets'    => 'labels2tickets',
-    'customers'         => 'customers'
+    'settings'              => 'config',
+    'pages'                 => 'pages',
+    'strings'               => 'strings',
+    'styles'                => 'stylesheets',
+    'sessions'              => 'sessions',
+    'tickets'               => 'tickets',
+    'labels'                => 'labels',
+    'labels2tickets'        => 'labels2tickets',
+    'customers'             => 'customers',
+    'users'                 => 'users',
+    'groups'                => 'groups',
+    'permissions'           => 'permissions',
+    'users2groups'          => 'users2groups',
+    'permissions2groups'    => 'permissions2groups'
 );
 
 $GLOBALS['columns'] = array(
@@ -45,7 +50,7 @@ $GLOBALS['columns'] = array(
         'displayName'   => 'displayName',
         'styles'        => 'stylesheets',
         'viewInNav'     => 'viewInNav',
-        'order'         => '[order]'
+        'order'         => 'order'
     ),
 
     'sessions'  => array(
@@ -79,7 +84,9 @@ $GLOBALS['columns'] = array(
     'labels'    => array(
         'ID'            => 'labelID',
         'name'          => 'name',
-        'displayName'   => 'displayName'
+        'displayName'   => 'displayName',
+        'bg-color'      => 'bg-color',
+        'text-color'    => 'text-color'
     ),
 
     'labels2tickets'    => array(
@@ -91,6 +98,35 @@ $GLOBALS['columns'] = array(
         'ID'            => 'customerID',
         'name'          => 'name',
         'contactPerson' => 'contactPerson'
+    ),
+
+    'users' => array(
+        'ID'            => 'userID',
+        'name'          => 'name',
+        'mail'          => 'mail',
+        'profilePic'    => 'profilePicFileName',
+        'passHash'      => 'passwordHash'
+    ),
+
+    'groups'    => array(
+        'ID'            => 'groupID',
+        'name'          => 'name',
+        'displayName'   => 'displayName'
+    ),
+
+    'permissions'   => array(
+        'ID'    => 'permissionID',
+        'name'  => 'name'
+    ),
+
+    'users2groups'  => array(
+        'userID'    => 'userID',
+        'groupID'   => 'groupID'
+    ),
+
+    'permissions2groups'    => array(
+        'permissionID'  => 'permissionID',
+        'groupID'       => 'groupID'
     )
 );
 ?>

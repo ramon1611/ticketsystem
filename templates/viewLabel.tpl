@@ -1,7 +1,6 @@
 {* Smarty *}
 <div class="table full">
     <div class="tr tr-header">
-        <div class="td td-header"><input type="checkbox" name="all-ticket-id" title="{$strings.{"ticket.overview.selectAll"}}"></div>
         <div class="td td-header">{$strings.{"ticket.overview.ticketID"}}</div>
         <div class="td td-header">{$strings.{"ticket.overview.from"}}</div>
         <div class="td td-header">{$strings.{"ticket.overview.subject"}}</div>
@@ -12,23 +11,22 @@
         <div class="td td-header">{$strings.{"ticket.overview.customerNumber"}}</div>
     </div>
 
-    {foreach from=$tickets item=ticketData key=ticketID}
+    {foreach from=$labelTickets item=ticketID}
         <div class="tr">
-            <div class="td"><input type="checkbox" name="ticket-id" value="{$ticketID}" title="{$strings.{"ticket.overview.selectSingle"}}"></div>
             <div class="td">{$ticketID}</div>
-            <div class="td">{$ticketData.from}</div>
-            <div class="td">{$ticketData.subject}</div>
-            <div class="td">{$ticketData.timestamp}</div>
-            <div class="td">{$ticketData.status}</div>
+            <div class="td">{$tickets[$ticketID].from}</div>
+            <div class="td">{$tickets[$ticketID].subject}</div>
+            <div class="td">{$tickets[$ticketID].timestamp}</div>
+            <div class="td">{$tickets[$ticketID].status}</div>
             <div class="td">
-                {foreach from=$ticketData.labels item=labelID}
+                {foreach from=$tickets[$ticketID].labels item=labelID}
                     <a href="{$settings.{"url.index.fileName"}}?{$settings.{"url.index.handlerIdentifier"}}=label_handler&action=view&labelID={$labelID}">
                         <div class="labelBox" style="background-color: #{$labels[$labelID].{"bg-color"}}; color: #{$labels[$labelID].{"text-color"}};">{$labels[$labelID].displayName}</div>
                     </a>
                 {/foreach}
             </div>
-            <div class="td">{$ticketData.ownerID}</div>
-            <div class="td">{$ticketData.customerID}<br>{$customers[$ticketData.customerID].name}</div>
+            <div class="td">{$tickets[$ticketID].ownerID}</div>
+            <div class="td">{$tickets[$ticketID].customerID}<br>{$customers[$tickets[$ticketID].customerID].name}</div>
         </div>
     {/foreach}
 </div>
