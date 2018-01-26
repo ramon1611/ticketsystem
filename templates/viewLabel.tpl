@@ -1,5 +1,10 @@
 {* Smarty *}
-<div class="table full">
+<ul class="tableSelector">
+    <li {* class="current" *} ><a href="#">{$strings.{"label.view.selector.tickets"}}</a></li>
+    <li><a href="#">{$strings.{"label.view.selector.kb"}}</a></li>
+</ul>
+
+<div id="ticketsTable" class="table full">
     <div class="tr tr-header">
         <div class="td td-header">{$strings.{"ticket.overview.ticketID"}}</div>
         <div class="td td-header">{$strings.{"ticket.overview.from"}}</div>
@@ -28,5 +33,13 @@
             <div class="td">{$tickets[$ticketID].ownerID}</div>
             <div class="td">{$tickets[$ticketID].customerID}<br>{$customers[$tickets[$ticketID].customerID].name}</div>
         </div>
+    {/foreach}
+</div>
+
+<div id="kbTable" class="table full" style="display: none;">
+
+
+    {foreach from=$labelKBs item=kbID}
+
     {/foreach}
 </div>

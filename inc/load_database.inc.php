@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * @author ramon1611
  * -----
- * Last Modified: Thursday, 25th January 2018 4:10:11 pm
+ * Last Modified: Friday, 26th January 2018 1:47:41 pm
  * Modified By: ramon1611
  */
 
@@ -156,12 +156,15 @@ $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( 
 if ( $sql ) {
     while ( $result = $GLOBALS['db']->getRecord( $sql ) ) {
         if ( $result ) {
-            $GLOBALS['users']['items'][$result[$GLOBALS['columns']['users']['ID']]] = array(
+            $userData = array(
+                'id'            => $result[$GLOBALS['columns']['users']['ID']],
                 'name'          => $result[$GLOBALS['columns']['users']['name']],
                 'mail'          => $result[$GLOBALS['columns']['users']['mail']],
                 'profilePic'    => $result[$GLOBALS['columns']['users']['profilePic']],
                 'passHash'      => $result[$GLOBALS['columns']['users']['passHash']]
             );
+
+            $GLOBALS['user']['items'][] = new Libs\User( $userData );
         } else
             trigger_error( 'The user could not be loaded from the database! [$GLOBALS["db"]->getRecord(@res:*|'.$GLOBALS['tables']['users'].')]', E_USER_ERROR );
     }

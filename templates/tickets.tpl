@@ -1,4 +1,11 @@
 {* Smarty *}
+<ul class="tableSelector">
+    <li><a href="#">{$strings.{"ticket.overview.selector.viewAllTickets"}}</a></li>
+    <li><a href="#">{$strings.{"ticket.overview.selector.viewOpenTickets"}}</a></li>
+    <li><a href="#">{$strings.{"ticket.overview.selector.viewClosedTickets"}}</a></li>
+    <li><a href="#">{$strings.{"ticket.overview.selector.viewHiddenTickets"}}</a></li>
+</ul>
+
 <div class="table full">
     <div class="tr tr-header">
         <div class="td td-header"><input type="checkbox" name="all-ticket-id" title="{$strings.{"ticket.overview.selectAll"}}"></div>

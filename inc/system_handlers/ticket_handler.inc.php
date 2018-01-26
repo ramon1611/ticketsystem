@@ -5,7 +5,7 @@
  * File Created: Thursday, 25th January 2018 4:41:52 pm
  * Author: ramon1611
  * -----
- * Last Modified: Thursday, 25th January 2018 4:42:00 pm
+ * Last Modified: Friday, 26th January 2018 7:31:50 am
  * Modified By: ramon1611
  */
 
@@ -17,7 +17,5 @@ foreach ( $GLOBALS['tickets'] as $ticketID => $ticketData ) {
 
     if ( isset( $labelList ) && $labelList )
         $GLOBALS['tickets'][$ticketID]['labels'] = $labelList;
-    else
-        trigger_error( 'No labels could be assigned to the tickets!', E_USER_ERROR );
 }
 ?>
