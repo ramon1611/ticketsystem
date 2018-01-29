@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Thursday, 25th January 2018 10:33:10 am
+ * Last Modified: Monday, 29th January 2018 4:58:14 pm
  * Modified By: ramon1611
  */
 
@@ -17,6 +17,7 @@ error_reporting( E_ALL & ~(E_STRICT|E_NOTICE) );
 session_start();
 ob_start();
 
+header('Content-Type: text/html; charset=UTF-8'); 
 
 $GLOBALS['hostInfo'] = array(
 	'baseDir'		=> __DIR__,

@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "262d3df46743526dd959bd913e3d769a",
+    "content-hash": "02148b6eac0334cbf6ab5532f1f918a2",
     "packages": [
         {
             "name": "heimans/yadal",
-            "version": "1.0.1.5",
+            "version": "1.0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramon1611/Yadal.git",
-                "reference": "7aa9064a808f09343d408ef1404c644dc8b6d302"
+                "reference": "7fa32e77dfbe7b8e6d1329ceb8c0d4a49f5d63e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://h2635187.stratoserver.net/repo/composer/dist/heimans/yadal/heimans-yadal-7aa9064a808f09343d408ef1404c644dc8b6d302-zip-9cf9d4.zip",
-                "reference": "7aa9064a808f09343d408ef1404c644dc8b6d302",
-                "shasum": "018ebb5ffcbff28d04f93f5bca7fef1c77c9e719"
+                "url": "http://h2635187.stratoserver.net/repo/composer/dist/heimans/yadal/heimans-yadal-7fa32e77dfbe7b8e6d1329ceb8c0d4a49f5d63e1-zip-7ef7b2.zip",
+                "reference": "7fa32e77dfbe7b8e6d1329ceb8c0d4a49f5d63e1",
+                "shasum": "19e97229dd47fdb480996caba61a7d8970f086eb"
             },
             "type": "library",
             "autoload": {
@@ -41,10 +41,48 @@
             "description": "Database Abstraction Layer",
             "homepage": "https://github.com/ramon1611/Yadal",
             "support": {
-                "source": "https://github.com/ramon1611/Yadal/tree/1.0.1.5",
+                "source": "https://github.com/ramon1611/Yadal/tree/1.0.1.6",
                 "issues": "https://github.com/ramon1611/Yadal/issues"
             },
-            "time": "2018-01-25T01:17:45+00:00"
+            "time": "2018-01-29T17:02:00+00:00"
+        },
+        {
+            "name": "ramon1611/errorhandler",
+            "version": "1.0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramon1611/ErrorHandler.git",
+                "reference": "fc2bcd676650df1e7729d746da165275d260b357"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://h2635187.stratoserver.net/repo/composer/dist/ramon1611/errorhandler/ramon1611-errorhandler-fc2bcd676650df1e7729d746da165275d260b357-zip-6406c2.zip",
+                "reference": "fc2bcd676650df1e7729d746da165275d260b357",
+                "shasum": "462dce90dea8e1b987575e7211395600f32dc89e"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ramon1611\\Libs\\": "libs/"
+                }
+            },
+            "license": [
+                "CC-BY-SA-4.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ramon Rosin (ramon1611)",
+                    "email": "rosin.ramon@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "ErrorHandler Class",
+            "homepage": "https://github.com/ramon1611/ErrorHandler",
+            "support": {
+                "source": "https://github.com/ramon1611/ErrorHandler/tree/1.0.0.1",
+                "issues": "https://github.com/ramon1611/ErrorHandler/issues"
+            },
+            "time": "2018-01-29T15:35:55+00:00"
         },
         {
             "name": "ramon1611/session",

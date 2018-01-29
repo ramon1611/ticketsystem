@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 29th January 2018 11:45:06 am
+ * Last Modified: Monday, 29th January 2018 6:33:44 pm
  * Modified By: ramon1611
  */
 
@@ -37,7 +37,8 @@ $GLOBALS['path'] = array(
 		)
 	),
 
-	'styles'	    		=> './css',
+    'styles'	    		=> './css',
+    'scripts'               => './scripts',
 	'templates'				=> $GLOBALS['hostInfo']['baseDir'].'/templates',
 	'templates_compiled'	=> $GLOBALS['hostInfo']['baseDir'].'/templates/compiled',
 	'config'				=> $GLOBALS['hostInfo']['baseDir'].'/config',
@@ -57,6 +58,7 @@ $GLOBALS['page'] = array(
 	'caption'	=> NULL, // = displayName from DB
     'href'		=> NULL,
     'styles'	=> NULL, // = stylesheets from DB
+    'scripts'   => NULL, // = scripts from DB
     'order'     => NULL, // = order from DB
 	'items'		=> NULL  // Array of Page-Arrays
 );
@@ -74,6 +76,7 @@ $GLOBALS['user'] = array(
 $GLOBALS['settings'] = NULL;
 $GLOBALS['strings'] = NULL;
 $GLOBALS['styles'] = NULL;
+$GLOBALS['scripts'] = NULL;
 $GLOBALS['tickets'] = NULL;
 $GLOBALS['labels'] = NULL;
 $GLOBALS['customers'] = NULL;
@@ -83,13 +86,12 @@ $GLOBALS['permissions'] = NULL;
 //* Initialization Code
 // Include Required Files
 require_once( $GLOBALS['path']['configFile'] );
-require_once( $GLOBALS['path']['includes']['error_handler'] );
 $GLOBALS['classLoader'] = require_once( $GLOBALS['path']['composer']['autoload'] );
 
 // Initialize ErrorHandler
 $confArr = array(
     'excludeFiles'      => $GLOBALS['errorHandler_excludeFiles'],
-    'errorStylesheet'   => $GLOBALS['errorHandler_errorStylesheet']
+    'errorStylesheet'   => $GLOBALS['path']['styles'].'/'.$GLOBALS['errorHandler_errorStylesheetFileName']
 );
 
 $GLOBALS['errorHandler'] = new Libs\ErrorHandler( $confArr );
@@ -103,12 +105,11 @@ $GLOBALS['smarty']->setConfigDir( $GLOBALS['path']['config'] );
 $GLOBALS['smarty']->setCacheDir( $GLOBALS['path']['cache'] );
 
 // Connect to Database
-$db = newYadal( $GLOBALS['dbInfo']['database'], $GLOBALS['dbInfo']['dbType'] );
-if ( ! $db->Connect( $GLOBALS['dbInfo']['host'], $GLOBALS['dbInfo']['username'], $GLOBALS['dbInfo']['password'] ) ) {
-	$db->Close();
-	trigger_error( 'A connection to the database could not be established!<br><strong>DB Message:</strong> '.$db->getError(), E_USER_ERROR );
-} else
-    $GLOBALS['db'] = $db;
+$GLOBALS['db'] = newYadal( $GLOBALS['dbInfo']['database'], $GLOBALS['dbInfo']['dbType'] );
+if ( ! $GLOBALS['db']->Connect( $GLOBALS['dbInfo']['host'], $GLOBALS['dbInfo']['username'], $GLOBALS['dbInfo']['password'] ) ) {
+	$GLOBALS['db']->Close();
+	trigger_error( 'A connection to the database could not be established!<br><strong>DB Message:</strong> '.$GLOBALS['db']->getError(), E_USER_ERROR );
+}
 
 // Initialize SQLQueryBuilder
 $GLOBALS['query'] = new Libs\SQLQueryBuilder();

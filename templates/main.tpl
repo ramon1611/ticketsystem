@@ -10,6 +10,10 @@
         {foreach from=$page.styles item=stylesheet}
             <link rel="stylesheet" type="text/css" href="{$stylesheet}">
         {/foreach}
+
+        {foreach from=$page.scripts item=script}
+            <script type="{$script.type}" src="{$script.src}" {if $script.isAsync == true}async{/if}></script>
+        {/foreach}
     </head>
 
     <body>

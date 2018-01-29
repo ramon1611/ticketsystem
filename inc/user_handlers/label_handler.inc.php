@@ -5,7 +5,7 @@
  * File Created: Thursday, 25th January 2018 4:21:49 pm
  * Author: ramon1611
  * -----
- * Last Modified: Thursday, 25th January 2018 6:06:23 pm
+ * Last Modified: Monday, 29th January 2018 6:48:24 pm
  * Modified By: ramon1611
  */
 
@@ -26,6 +26,10 @@ if ( isset( $_handlerAction ) ) {
             $pageStyles = explode( ',', $GLOBALS['page']['items'][$pageName]['styles'] );
             foreach ( $pageStyles as $styleID )
                 $GLOBALS['page']['styles'][$styleID] = $GLOBALS['path']['styles'].'/'.$GLOBALS['styles'][$styleID]['fileName'];
+
+            $pageScripts = explode( ',', $GLOBALS['page']['items'][$pageName]['scripts'] );
+            foreach ( $pageScripts as $scriptID )
+                $GLOBALS['page']['scripts'][$scriptID] = $GLOBALS['scripts'][$scriptID];
 
             $labelTickets = getTicketsOfLabel( $labelID );
             $labelKBs = getKBsOfLabel( $labelID );

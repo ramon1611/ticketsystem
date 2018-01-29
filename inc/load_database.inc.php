@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 29th January 2018 8:02:09 am
+ * Last Modified: Monday, 29th January 2018 6:58:10 pm
  * Modified By: ramon1611
  */
 
@@ -34,12 +34,13 @@ if ( $sql ) {
                 'name'          => $result[$GLOBALS['columns']['pages']['name']],
                 'displayName'   => $result[$GLOBALS['columns']['pages']['displayName']],
                 'styles'        => $result[$GLOBALS['columns']['pages']['styles']],
+                'scripts'       => $result[$GLOBALS['columns']['pages']['scripts']],
                 'viewInNav'     => $result[$GLOBALS['columns']['pages']['viewInNav']],
                 'order'         => $result[$GLOBALS['columns']['pages']['order']]
             );
         } else
 			trigger_error( 'The page could not be loaded from the database! [$GLOBALS["db"]->getRecord(@res:*|'.$GLOBALS['tables']['pages'].')]', E_USER_ERROR );
-	}
+    }
 } else
 	trigger_error( 'No pages could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['pages'].')]', E_USER_ERROR );
 unset( $sql, $result );
@@ -71,6 +72,24 @@ if ( $sql ) {
 	}
 } else
 	trigger_error( 'No stylesheets could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['styles'].')]', E_USER_ERROR );
+unset( $sql, $result );
+
+//* Load Scripts
+$sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['scripts'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
+if ( $sql ) {
+	while ( $result = $GLOBALS['db']->getRecord( $sql ) ) {
+		if ( $result )
+            $GLOBALS['scripts'][$result[$GLOBALS['columns']['scripts']['ID']]] = array(
+                'name'      => $result[$GLOBALS['columns']['scripts']['name']],
+                'type'      => $result[$GLOBALS['columns']['scripts']['type']],
+                'src'       => $GLOBALS['path']['scripts'].'/'.$result[$GLOBALS['columns']['scripts']['fileName']],
+                'isAsync'   => $result[$GLOBALS['columns']['scripts']['isAsync']]
+            );
+		else
+			trigger_error( 'The script could not be loaded from the database! [$GLOBALS["db"]->getRecord(@res:*|'.$GLOBALS['tables']['scripts'].')]', E_USER_ERROR );
+	}
+} else
+	trigger_error( 'No scripts could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['scripts'].')]', E_USER_ERROR );
 unset( $sql, $result );
 
 //* Load Sessions
@@ -201,5 +220,21 @@ if ( $sql ) {
     }
 } else
     trigger_error( 'No permissions could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['permissions'].')]', E_USER_ERROR );
+unset( $sql, $result );
+
+//* Load UserHandlers
+$sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['userHandlers'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
+if ( $sql ) {
+    while ( $result = $GLOBALS['db']->getRecord( $sql ) ) {
+        if ( $result ) {
+            $GLOBALS['userHandlers'][$result[$GLOBALS['columns']['userHandlers']['name']]] = array(
+                'ID'      => $result[$GLOBALS['columns']['userHandlers']['ID']],
+                'pageID'    => $result[$GLOBALS['columns']['userHandlers']['pageID']]
+            );
+        } else
+            trigger_error( 'The user handler could not be loaded from the database! [$GLOBALS["db"]->getRecord(@res:*|'.$GLOBALS['tables']['userHandlers'].')]', E_USER_ERROR );
+    }
+} else
+    trigger_error( 'No user handlers could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['userHandlers'].')]', E_USER_ERROR );
 unset( $sql, $result );
 ?>

@@ -1,7 +1,7 @@
 {* Smarty *}
 <ul class="tableSelector">
-    <li {* class="current" *} ><a href="#">{$strings.{"label.view.selector.tickets"}}</a></li>
-    <li><a href="#">{$strings.{"label.view.selector.kb"}}</a></li>
+    <li><a href="{$settings.{"url.index.fileName"}}?{$settings.{"url.index.handlerIdentifier"}}=error_handler&action=noJS">{$strings.{"label.view.selector.tickets"}}</a></li>
+    <li><a href="{$settings.{"url.index.fileName"}}?{$settings.{"url.index.handlerIdentifier"}}=error_handler&action=noJS">{$strings.{"label.view.selector.kb"}}</a></li>
 </ul>
 
 <div id="ticketsTable" class="table full">
