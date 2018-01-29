@@ -122,17 +122,17 @@
         },
         {
             "name": "ramon1611/user",
-            "version": "1.0.0",
+            "version": "1.0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramon1611/User.git",
-                "reference": "a64c57f14e7fe2471fa1cd987fec7dfb87d58405"
+                "reference": "9a9b6a042617b1e86ec5e1a0752b71213cb4376c"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://h2635187.stratoserver.net/repo/composer/dist/ramon1611/user/ramon1611-user-a64c57f14e7fe2471fa1cd987fec7dfb87d58405-zip-c23cae.zip",
-                "reference": "a64c57f14e7fe2471fa1cd987fec7dfb87d58405",
-                "shasum": "35f20d00a058b33a7c6638730a1ffb1583894559"
+                "url": "http://h2635187.stratoserver.net/repo/composer/dist/ramon1611/user/ramon1611-user-9a9b6a042617b1e86ec5e1a0752b71213cb4376c-zip-463fb9.zip",
+                "reference": "9a9b6a042617b1e86ec5e1a0752b71213cb4376c",
+                "shasum": "085ef88a6f9c2a5cc094c067947d4d19d3e04242"
             },
             "type": "library",
             "autoload": {
@@ -153,10 +153,10 @@
             "description": "User Class",
             "homepage": "https://github.com/ramon1611/User",
             "support": {
-                "source": "https://github.com/ramon1611/User/tree/1.0.0",
+                "source": "https://github.com/ramon1611/User/tree/1.0.0.1",
                 "issues": "https://github.com/ramon1611/User/issues"
             },
-            "time": "2018-01-22T10:15:06+00:00"
+            "time": "2018-01-26T11:00:38+00:00"
         },
         {
             "name": "smarty/smarty",

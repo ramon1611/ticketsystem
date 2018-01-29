@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Thursday, 25th January 2018 5:56:01 pm
+ * Last Modified: Monday, 29th January 2018 11:45:06 am
  * Modified By: ramon1611
  */
 
@@ -23,7 +23,6 @@ $GLOBALS['path'] = array(
 		'error_handler'			=> $GLOBALS['hostInfo']['baseDir'].'/inc/error_handler.inc.php',
         'handler_detection'	    => $GLOBALS['hostInfo']['baseDir'].'/inc/handler_detection.inc.php',
         'load_database'         => $GLOBALS['hostInfo']['baseDir'].'/inc/load_database.inc.php',
-        'class_loader'          => $GLOBALS['hostInfo']['baseDir'].'/inc/class_loader.inc.php',
         
         'user_handlersDir'		=> $GLOBALS['hostInfo']['baseDir'].'/inc/user_handlers',
 		'system_handlersDir'	=> $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers',
@@ -38,11 +37,6 @@ $GLOBALS['path'] = array(
 		)
 	),
 
-	'libsDir'		=> $GLOBALS['hostInfo']['baseDir'].'/libs',
-	'libs' 			=> array(
-		'nekwitaya'	=> $GLOBALS['hostInfo']['baseDir'].'/libs/nekwitaya/nekwitaya-framework.class.php'
-	),
-
 	'styles'	    		=> './css',
 	'templates'				=> $GLOBALS['hostInfo']['baseDir'].'/templates',
 	'templates_compiled'	=> $GLOBALS['hostInfo']['baseDir'].'/templates/compiled',
@@ -53,6 +47,8 @@ $GLOBALS['path'] = array(
         'autoload'          => $GLOBALS['hostInfo']['baseDir'].'/vendor/autoload.php'
     )
 );
+
+$GLOBALS['pageParams'] = $_GET;
 
 $GLOBALS['page'] = array(
 	'ID'		=> NULL, // = pageID from DB
@@ -86,10 +82,18 @@ $GLOBALS['permissions'] = NULL;
 
 //* Initialization Code
 // Include Required Files
-require_once( $GLOBALS['path']['includes']['error_handler'] );
 require_once( $GLOBALS['path']['configFile'] );
-require_once( $GLOBALS['path']['includes']['class_loader'] );
+require_once( $GLOBALS['path']['includes']['error_handler'] );
 $GLOBALS['classLoader'] = require_once( $GLOBALS['path']['composer']['autoload'] );
+
+// Initialize ErrorHandler
+$confArr = array(
+    'excludeFiles'      => $GLOBALS['errorHandler_excludeFiles'],
+    'errorStylesheet'   => $GLOBALS['errorHandler_errorStylesheet']
+);
+
+$GLOBALS['errorHandler'] = new Libs\ErrorHandler( $confArr );
+$GLOBALS['errorHandler']->registerHandler();
 
 // Initialize Smarty
 $GLOBALS['smarty'] = new \Smarty();

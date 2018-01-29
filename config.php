@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Thursday, 25th January 2018 2:20:57 pm
+ * Last Modified: Monday, 29th January 2018 2:23:33 pm
  * Modified By: ramon1611
  */
 
@@ -128,5 +128,14 @@ $GLOBALS['columns'] = array(
         'permissionID'  => 'permissionID',
         'groupID'       => 'groupID'
     )
+);
+
+$GLOBALS['errorHandler_errorStylesheet'] = './css/error.css';
+$GLOBALS['errorHandler_excludeFiles'] = array(
+    'access.class.php',
+    'mssql.class.php',
+    'mysql.class.php',
+    'mysqli.class.php',
+    'odbc.class.php'
 );
 ?>
