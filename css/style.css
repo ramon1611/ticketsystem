@@ -4,7 +4,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Friday, 26th January 2018 11:18:10 am
+ * Last Modified: Tuesday, 30th January 2018 6:00:07 pm
  * Modified By: ramon1611
  */
 
@@ -180,6 +180,10 @@ div.labelBox::before {
     color: #a5a5a5;
 }
 
+div.labelBox.big {
+    font-size: 25pt !important;
+}
+
 ul.tableSelector {
     list-style-type: none;
     padding: 0;
@@ -188,7 +192,7 @@ ul.tableSelector {
 
 ul.tableSelector > li {
     display: inline;
-    padding: 2px;
+    padding: 2px 5px 2px 5px;
     margin-right: 2px;
     background-color: #e1e1e1;
 
@@ -197,6 +201,15 @@ ul.tableSelector > li {
     border-radius: 5px;
 }
 
-ul.tableSelector > li.current {
-    display: none;
+.currentSelector {
+    -webkit-box-shadow:inset 0 0 5px 0 #333;
+    box-shadow:inset 0 0 5px 0 #333;
+
+    pointer-events: none;
 }
+
+.hidden {
+    display: none !important;
+}
+
+

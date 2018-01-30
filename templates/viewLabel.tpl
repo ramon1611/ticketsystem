@@ -1,10 +1,14 @@
 {* Smarty *}
+<div class="labelBox big" style="background-color: #{$labels[$currentLabelID].{"bg-color"}}; color: #{$labels[$currentLabelID].{"text-color"}};">
+    {$labels[$currentLabelID].displayName}
+</div>
+
 <ul class="tableSelector">
-    <li><a href="{$settings.{"url.index.fileName"}}?{$settings.{"url.index.handlerIdentifier"}}=error_handler&action=noJS">{$strings.{"label.view.selector.tickets"}}</a></li>
-    <li><a href="{$settings.{"url.index.fileName"}}?{$settings.{"url.index.handlerIdentifier"}}=error_handler&action=noJS">{$strings.{"label.view.selector.kb"}}</a></li>
+    <li id="ticketsSelector" class="currentSelector"><a href="{$settings.{"url.index.fileName"}}?{$settings.{"url.index.handlerIdentifier"}}=error_handler&action=noJS" onclick="sub_nav('tickets'); return false;">{$strings.{"label.view.selector.tickets"}}</a></li>
+    <li id="kbsSelector"><a href="{$settings.{"url.index.fileName"}}?{$settings.{"url.index.handlerIdentifier"}}=error_handler&action=noJS" onclick="sub_nav('kbs'); return false;">{$strings.{"label.view.selector.kb"}}</a></li>
 </ul>
 
-<div id="ticketsTable" class="table full">
+<div id="ticketsElement" class="table full currentElement">
     <div class="tr tr-header">
         <div class="td td-header">{$strings.{"ticket.overview.ticketID"}}</div>
         <div class="td td-header">{$strings.{"ticket.overview.from"}}</div>
@@ -36,8 +40,8 @@
     {/foreach}
 </div>
 
-<div id="kbTable" class="table full" style="display: none;">
-
+<div id="kbsElement" class="table full hidden">
+    -- kbsTable --
 
     {foreach from=$labelKBs item=kbID}
 
