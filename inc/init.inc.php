@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 29th January 2018 6:33:44 pm
+ * Last Modified: Tuesday, 30th January 2018 10:13:40 am
  * Modified By: ramon1611
  */
 
@@ -24,6 +24,7 @@ $GLOBALS['path'] = array(
         'handler_detection'	    => $GLOBALS['hostInfo']['baseDir'].'/inc/handler_detection.inc.php',
         'load_database'         => $GLOBALS['hostInfo']['baseDir'].'/inc/load_database.inc.php',
         
+        'smartyPluginsDir'      => $GLOBALS['hostInfo']['baseDir'].'/inc/smartyPlugins',
         'user_handlersDir'		=> $GLOBALS['hostInfo']['baseDir'].'/inc/user_handlers',
 		'system_handlersDir'	=> $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers',
 
@@ -100,9 +101,13 @@ $GLOBALS['errorHandler']->registerHandler();
 // Initialize Smarty
 $GLOBALS['smarty'] = new \Smarty();
 $GLOBALS['smarty']->setTemplateDir( $GLOBALS['path']['templates'] );
+$GLOBALS['smarty']->addPluginsDir( [ $GLOBALS['path']['includes']['smartyPluginsDir'] ] );
 $GLOBALS['smarty']->setCompileDir( $GLOBALS['path']['templates_compiled'] );
 $GLOBALS['smarty']->setConfigDir( $GLOBALS['path']['config'] );
 $GLOBALS['smarty']->setCacheDir( $GLOBALS['path']['cache'] );
+## Initialize Switch-Plugin
+$GLOBALS['smarty']->loadPlugin('smarty_compiler_switch');
+$GLOBALS['smarty']->registerFilter('post', 'smarty_postfilter_switch');
 
 // Connect to Database
 $GLOBALS['db'] = newYadal( $GLOBALS['dbInfo']['database'], $GLOBALS['dbInfo']['dbType'] );
@@ -130,6 +135,10 @@ $GLOBALS['smarty']->assign( 'customers', $GLOBALS['customers'] );
 $GLOBALS['smarty']->assign( 'users', $GLOBALS['user'] );
 
 // Display Smarty Template
-$GLOBALS['smarty']->display( $GLOBALS['settings']['templates.masterTemplate'] );
+if ( $GLOBALS['page']['name'] == $GLOBALS['settings']['page.login.pageName'] )
+    $GLOBALS['smarty']->display( $GLOBALS['settings']['templates.loginTemplate'] );
+else
+    $GLOBALS['smarty']->display( $GLOBALS['settings']['templates.masterTemplate'] );
+
 ob_end_flush();
 ?>

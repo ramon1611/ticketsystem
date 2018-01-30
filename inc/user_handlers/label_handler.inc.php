@@ -5,43 +5,62 @@
  * File Created: Thursday, 25th January 2018 4:21:49 pm
  * Author: ramon1611
  * -----
- * Last Modified: Monday, 29th January 2018 6:48:24 pm
+ * Last Modified: Tuesday, 30th January 2018 9:19:53 am
  * Modified By: ramon1611
  */
 
 namespace ramon1611;
 
 if ( isset( $_handlerAction ) ) {
-    switch ( $_handlerAction ) {
-        case 'view':
-            $labelID = $GLOBALS['pageParams']['labelID'];
-            $pageName = 'viewLabel';
-            
-            $GLOBALS['page']['ID']         = $GLOBALS['page']['items'][$pageName]['ID'];
-            $GLOBALS['page']['name']       = $pageName;
-            $GLOBALS['page']['title']      = $GLOBALS['page']['items'][$pageName]['displayName'].$GLOBALS['settings']['page.title.delimeter'].$GLOBALS['strings']['main.title.postfix'];
-            $GLOBALS['page']['caption']    = $GLOBALS['page']['items'][$pageName]['displayName'];
-            $GLOBALS['page']['href']       = $GLOBALS['settings']['url.index.fileName'].'?'.$GLOBALS['settings']['url.index.handlerIdentifier'].'=label_handler&action=view&labelID='.$labelID;
-            
-            $pageStyles = explode( ',', $GLOBALS['page']['items'][$pageName]['styles'] );
-            foreach ( $pageStyles as $styleID )
-                $GLOBALS['page']['styles'][$styleID] = $GLOBALS['path']['styles'].'/'.$GLOBALS['styles'][$styleID]['fileName'];
+    if ( isset( $GLOBALS['pageParams']['labelID'] ) ) {
+        $labelID = $GLOBALS['pageParams']['labelID'];
 
-            $pageScripts = explode( ',', $GLOBALS['page']['items'][$pageName]['scripts'] );
-            foreach ( $pageScripts as $scriptID )
-                $GLOBALS['page']['scripts'][$scriptID] = $GLOBALS['scripts'][$scriptID];
+        switch ( $_handlerAction ) {
+            case 'view':
+                $labelTickets = getTicketsOfLabel( $labelID );
+                $labelKBs = getKBsOfLabel( $labelID );
+                
+                $GLOBALS['smarty']->assign( 'action', $_handlerAction );
+                $GLOBALS['smarty']->assign( 'currentLabelID', $labelID );
+                $GLOBALS['smarty']->assign( 'labelTickets', $labelTickets );
+                $GLOBALS['smarty']->assign( 'labelKBs', $labelKBs );
+                break;
 
-            $labelTickets = getTicketsOfLabel( $labelID );
-            $labelKBs = getKBsOfLabel( $labelID );
+            case 'addForm':
             
-            $GLOBALS['smarty']->assign( 'currentLabelID', $labelID );
-            $GLOBALS['smarty']->assign( 'labelTickets', $labelTickets );
-            $GLOBALS['smarty']->assign( 'labelKBs', $labelKBs );
-            break;
-        
-        default:
-            break;
-    }    
+                $GLOBALS['smarty']->assign( 'action', $_handlerAction );
+                break;
+
+            case 'add':
+
+                break;
+            
+            case 'editForm':
+
+                $GLOBALS['smarty']->assign( 'action', $_handlerAction );
+                $GLOBALS['smarty']->assign( 'currentLabelID', $labelID );
+                break;
+
+            case 'edit':
+
+                break;
+
+            case 'deleteForm':
+            
+                $GLOBALS['smarty']->assign( 'action', $_handlerAction );
+                $GLOBALS['smarty']->assign( 'currentLabelID', $labelID );
+                break;
+
+            case 'delete':
+
+                break;
+            
+            default:
+                trigger_error( '[label_handler] Action "'.$_handlerAction.'" not provided!', E_USER_ERROR );
+                break;
+        }
+    } else
+        trigger_error( '[label_handler] labelID is not given!', E_USER_ERROR );
 } else
-    trigger_error( '[label_handler] A user handler can not be used without an action!', E_USER_WARNING );
+    trigger_error( '[label_handler] A user handler can not be used without an action!', E_USER_ERROR );
 ?>

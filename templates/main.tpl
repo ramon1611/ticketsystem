@@ -1,7 +1,4 @@
 {* Smarty *}
-{if $tpl_name == 'login'}
-    {include file="$tpl_name.tpl"}
-{else}
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,4 +34,3 @@
         <footer></footer>
     </body>
 </html>
-{/if}
