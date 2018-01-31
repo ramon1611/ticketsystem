@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{$page.title}</title>
+        <title>{$page.displayName}{$settings.{"page.title.delimeter"}}{$strings.{"main.title.suffix"}}</title>
 
         {foreach from=$page.styles item=stylesheet}
             <link rel="stylesheet" type="text/css" href="{$stylesheet}">
@@ -16,7 +16,7 @@
     <body>
         <header>
             <span class="mainCaption">{$strings.{"main.caption"}}</span>
-            <span class="pageCaption">{$page.caption}</span>
+            <span class="pageCaption">{$page.displayName}</span>
 
             <nav>
                 <ul class="navbar">

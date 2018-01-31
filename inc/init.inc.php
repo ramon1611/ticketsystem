@@ -5,7 +5,7 @@
  * File Created: Monday, 18th December 2017 1:04:58 pm
  * @author ramon1611
  * -----
- * Last Modified: Tuesday, 30th January 2018 10:13:40 am
+ * Last Modified: Wednesday, 31st January 2018 10:07:45 am
  * Modified By: ramon1611
  */
 
@@ -24,6 +24,7 @@ $GLOBALS['path'] = array(
         'handler_detection'	    => $GLOBALS['hostInfo']['baseDir'].'/inc/handler_detection.inc.php',
         'load_database'         => $GLOBALS['hostInfo']['baseDir'].'/inc/load_database.inc.php',
         
+        'pagesDir'              => $GLOBALS['hostInfo']['baseDir'].'/inc/pages',
         'smartyPluginsDir'      => $GLOBALS['hostInfo']['baseDir'].'/inc/smartyPlugins',
         'user_handlersDir'		=> $GLOBALS['hostInfo']['baseDir'].'/inc/user_handlers',
 		'system_handlersDir'	=> $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers',
@@ -36,7 +37,7 @@ $GLOBALS['path'] = array(
             'label_handler'         => $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/label_handler.inc.php',
             'ticket_handler'        => $GLOBALS['hostInfo']['baseDir'].'/inc/system_handlers/ticket_handler.inc.php'
 		)
-	),
+    ),
 
     'styles'	    		=> './css',
     'scripts'               => './scripts',
@@ -53,15 +54,14 @@ $GLOBALS['path'] = array(
 $GLOBALS['pageParams'] = $_GET;
 
 $GLOBALS['page'] = array(
-	'ID'		=> NULL, // = pageID from DB
-	'name'		=> NULL, // = name from DB
-	'title'		=> NULL, // = displayName from DB + Suffix
-	'caption'	=> NULL, // = displayName from DB
-    'href'		=> NULL,
-    'styles'	=> NULL, // = stylesheets from DB
-    'scripts'   => NULL, // = scripts from DB
-    'order'     => NULL, // = order from DB
-	'items'		=> NULL  // Array of Page-Arrays
+	'ID'		    => NULL, // = pageID from DB
+	'name'		    => NULL, // = name from DB
+	'displayName'	=> NULL, // = displayName from DB
+    'href'		    => NULL,
+    'styles'	    => NULL, // = stylesheets from DB
+    'scripts'       => NULL, // = scripts from DB
+    'order'         => NULL, // = order from DB
+	'items'		    => NULL  // Array of Page-Arrays
 );
 
 $GLOBALS['session'] = array(

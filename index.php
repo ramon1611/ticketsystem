@@ -1,14 +1,18 @@
 <?php
 /**
  * File: index.php
+ * 
  * Project: Ticketsystem
  * File Created: Monday, 18th December 2017 1:04:56 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 29th January 2018 4:58:14 pm
+ * Last Modified: Wednesday, 31st January 2018 7:34:26 pm
  * Modified By: ramon1611
  */
 
+/**
+ * Namespace ramon1611
+ */
 namespace ramon1611;
 
 error_reporting( E_ALL & ~(E_STRICT|E_NOTICE) );
@@ -32,20 +36,6 @@ $GLOBALS['hostInfo'] = array(
 );
 
 //! #DEBUG:BEGIN
-function debug( $var, $die = false ) {
-	echo '#DEBUG:BEGIN<br>';
-	if ( is_array( $var ) ) {
-		echo '<pre>';
-		print_r( $var );
-		echo '</pre>';
-	} else
-		var_dump( $var );
-
-	echo '#DEBUG:END<br>';
-	if ( $die )
-		die();
-}
-
 $debugFile = $GLOBALS['hostInfo']['baseDir'] . '/debug.php';
 if ( file_exists( $debugFile ) )
     require_once( $debugFile );

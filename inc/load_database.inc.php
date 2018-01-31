@@ -5,12 +5,10 @@
  * File Created: Monday, 18th December 2017 3:19:25 pm
  * @author ramon1611
  * -----
- * Last Modified: Monday, 29th January 2018 6:58:10 pm
+ * Last Modified: Wednesday, 31st January 2018 11:19:56 am
  * Modified By: ramon1611
  */
-
 namespace ramon1611;
-
 //* Load Config
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['settings'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -23,7 +21,6 @@ if ( $sql ) {
 } else
 	trigger_error( 'No settings could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['settings'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Pages
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['pages'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS, false ).' '.$GLOBALS['query']->order( array( $GLOBALS['db']->quote( $GLOBALS['columns']['pages']['order'] ) ) ) );
 if ( $sql ) {
@@ -44,7 +41,6 @@ if ( $sql ) {
 } else
 	trigger_error( 'No pages could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['pages'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Strings
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['strings'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -57,7 +53,6 @@ if ( $sql ) {
 } else
 	trigger_error( 'No strings could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['strings'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Stylesheets
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['styles'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -73,7 +68,6 @@ if ( $sql ) {
 } else
 	trigger_error( 'No stylesheets could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['styles'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Scripts
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['scripts'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -91,7 +85,6 @@ if ( $sql ) {
 } else
 	trigger_error( 'No scripts could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['scripts'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Sessions
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['sessions'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -107,7 +100,6 @@ if ( $sql ) {
 } else
     trigger_error( 'No sessions could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['sessions'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Tickets
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['tickets'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -127,7 +119,6 @@ if ( $sql ) {
 } else
     trigger_error( 'No tickets could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['tickets'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Labels
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['labels'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -140,7 +131,6 @@ if ( $sql ) {
             $textColor = ( isset( $result[$GLOBALS['columns']['labels']['text-color']] ) ) ?
                             $result[$GLOBALS['columns']['labels']['text-color']] :
                             $GLOBALS['settings']['label.default.text-color'];
-
             $GLOBALS['labels'][$id] = array(
                 'name'          => $result[$GLOBALS['columns']['labels']['name']],
                 'displayName'   => $result[$GLOBALS['columns']['labels']['displayName']],
@@ -153,7 +143,6 @@ if ( $sql ) {
 } else
     trigger_error( 'No labels could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['labels'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Customers
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['customers'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -169,7 +158,6 @@ if ( $sql ) {
 } else
     trigger_error( 'No customers could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['customers'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Users
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['users'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -182,7 +170,6 @@ if ( $sql ) {
                 'profilePic'    => $result[$GLOBALS['columns']['users']['profilePic']],
                 'passHash'      => $result[$GLOBALS['columns']['users']['passHash']]
             );
-
             $GLOBALS['user']['items'][] = new Libs\User( $userData );
         } else
             trigger_error( 'The user could not be loaded from the database! [$GLOBALS["db"]->getRecord(@res:*|'.$GLOBALS['tables']['users'].')]', E_USER_ERROR );
@@ -190,7 +177,6 @@ if ( $sql ) {
 } else
     trigger_error( 'No users could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['users'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Groups
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['groups'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -206,7 +192,6 @@ if ( $sql ) {
 } else
     trigger_error( 'No groups could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['groups'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load Permissions
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['permissions'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
@@ -221,7 +206,6 @@ if ( $sql ) {
 } else
     trigger_error( 'No permissions could be retrieved from the database! [$GLOBALS["db"]->query(@query:*|'.$GLOBALS['tables']['permissions'].')]', E_USER_ERROR );
 unset( $sql, $result );
-
 //* Load UserHandlers
 $sql = $GLOBALS['db']->query( $GLOBALS['query']->select( $GLOBALS['db']->quote( $GLOBALS['tables']['userHandlers'] ), $GLOBALS['query']::SELECT_ALL_COLUMNS ) );
 if ( $sql ) {
